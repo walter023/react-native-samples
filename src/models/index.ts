@@ -17,6 +17,12 @@ export const DATA: ListType[] = [
     icon: 'turret',
     screenName: Screens.VECTOR_REFLECTION,
   },
+  {
+    name: 'Rope Effect',
+    description: 'Some samples the usage of rope physics curves using reanimated & svg.',
+    icon: 'length',
+    screenName: Screens.ROPE_EFFECT,
+  },
 ];
 
 export const ControlPointsInitState: Points = {

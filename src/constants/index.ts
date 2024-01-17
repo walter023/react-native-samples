@@ -2,6 +2,7 @@ export const Screens = {
   HOME: 'HOME',
   BEZIER_CURVE: 'BEZIER_CURVE',
   VECTOR_REFLECTION: 'VECTOR_REFLECTION',
+  ROPE_EFFECT: 'ROPE_EFFECT',
 };
 
 export const Color = {
