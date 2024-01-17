@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {Screens} from '../constants';
-import {HomeScreen} from '../screens/Home';
+import React, { useState } from 'react';
+import { Screens } from '../constants';
+import { HomeScreen } from '../screens/Home';
 
-const templateScreen: {[key: string]: React.JSX.Element} = {
+const templateScreen: { [key: string]: React.JSX.Element } = {
   [Screens.HOME]: <HomeScreen />,
 };
 
@@ -26,7 +26,8 @@ export const ContextNavigation = () => {
         currentScreen,
         navigate,
         back: () => setCurrentScreen(Screens.HOME),
-      }}>
+      }}
+    >
       {templateScreen[currentScreen]}
     </NavigationContext.Provider>
   );
