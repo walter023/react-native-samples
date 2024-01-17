@@ -19,3 +19,6 @@ export const Color = {
   BLACK: '#000000',
   GREY: '#d3d3d3',
 };
+
+export const R = 10;
+export const BEZIER_DURATION = { duration: 4000 };
