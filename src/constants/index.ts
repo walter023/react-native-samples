@@ -22,4 +22,7 @@ export const Color = {
 };
 
 export const R = 10;
+export const BOUNCES = 1;
+export const DURATION = { duration: 18000 };
 export const BEZIER_DURATION = { duration: 4000 };
+export const ANGLE = { startAngle: -80, endAngle: 60 };
