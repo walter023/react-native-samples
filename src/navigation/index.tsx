@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Screens } from '../constants';
 import { HomeScreen } from '../screens/Home';
 import { BezierCurveScreen } from '../screens/BezierCurve';
+import { VectorReflectionScreen } from '../screens/VectorReflection';
 
 const templateScreen: { [key: string]: React.JSX.Element } = {
   [Screens.HOME]: <HomeScreen />,
   [Screens.BEZIER_CURVE]: <BezierCurveScreen />,
+  [Screens.VECTOR_REFLECTION]: <VectorReflectionScreen />,
 };
 
 export const NavigationContext = React.createContext({
