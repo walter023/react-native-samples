@@ -11,9 +11,13 @@ export const DATA: ListType[] = [
     icon: 'bezierCurve',
     screenName: Screens.BEZIER_CURVE,
   },
- 
+  {
+    name: 'Vector Reflection',
+    description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & svg.',
+    icon: 'turret',
+    screenName: Screens.VECTOR_REFLECTION,
+  },
 ];
-
 
 export const ControlPointsInitState: Points = {
   p0: {
