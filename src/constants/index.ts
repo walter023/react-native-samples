@@ -1,5 +1,6 @@
 export const Screens = {
   HOME: 'HOME',
+  BEZIER_CURVE: 'BEZIER_CURVE',
 };
 
 export const Color = {
