@@ -11,5 +11,4 @@ export const Icons: { [key: string]: any } = {
   length: Length,
   turret: Turret,
   backButton: BackButton,
-
 };

@@ -23,6 +23,12 @@ export const DATA: ListType[] = [
     icon: 'length',
     screenName: Screens.ROPE_EFFECT,
   },
+  {
+    name: 'Trippy Shader',
+    description: 'Shader Sample description here',
+    icon: 'axis',
+    screenName: Screens.SHADER,
+  },
 ];
 
 export const ControlPointsInitState: Points = {

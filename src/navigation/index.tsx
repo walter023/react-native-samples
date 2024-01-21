@@ -4,12 +4,14 @@ import { HomeScreen } from '../screens/Home';
 import { BezierCurveScreen } from '../screens/BezierCurve';
 import { VectorReflectionScreen } from '../screens/VectorReflection';
 import { RopeEffectScreen } from '../screens/RopeEffect';
+import { ShaderScreen } from '../screens/Shader';
 
 const templateScreen: { [key: string]: React.JSX.Element } = {
   [Screens.HOME]: <HomeScreen />,
   [Screens.BEZIER_CURVE]: <BezierCurveScreen />,
   [Screens.VECTOR_REFLECTION]: <VectorReflectionScreen />,
   [Screens.ROPE_EFFECT]: <RopeEffectScreen />,
+  [Screens.SHADER]: <ShaderScreen />,
 };
 
 export const NavigationContext = React.createContext({
