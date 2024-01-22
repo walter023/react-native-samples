@@ -14,8 +14,13 @@ vec4 main(vec2 pos) {
   float d = length(uv);
   d = sin(d * 12 + iTime * 0.002) / 12;
   d = abs(d);
+
   d = 0.002 / d; 
-  return vec4(d, d, d, 1);
+
+  vec3 redColor = vec3(1, 0, 0);
+  
+  redColor *= d;
+  return vec4(redColor, 1);
 }`)!;
 
 export const TryppyShader = () => {
