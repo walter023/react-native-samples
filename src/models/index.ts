@@ -12,6 +12,12 @@ export const DATA: ListType[] = [
     screenName: Screens.BEZIER_CURVE,
   },
   {
+    name: 'Shader (Rings)',
+    description: 'Learning and playing with shaders using reanimated, skia & glsl.',
+    icon: 'axis',
+    screenName: Screens.SHADER,
+  },
+  {
     name: 'Vector Reflection',
     description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & svg.',
     icon: 'turret',
@@ -22,12 +28,6 @@ export const DATA: ListType[] = [
     description: 'Some samples the usage of rope physics curves using reanimated & svg.',
     icon: 'length',
     screenName: Screens.ROPE_EFFECT,
-  },
-  {
-    name: 'Trippy Shader',
-    description: 'Shader Sample description here',
-    icon: 'axis',
-    screenName: Screens.SHADER,
   },
 ];
 

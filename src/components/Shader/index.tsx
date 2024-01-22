@@ -23,11 +23,10 @@ vec4 main(vec2 pos) {
   return vec4(redColor, 1);
 }`)!;
 
-export const TryppyShader = () => {
+export const Rings = () => {
   const { height, width } = useWindowDimensions();
   const iResolution = vec(width, height);
   const clock = useClock();
-
   const uniforms = useDerivedValue(() => ({ iResolution, iTime: clock.value }), [clock]);
 
   return (
