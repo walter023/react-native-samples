@@ -12,7 +12,7 @@ vec4 main(vec2 pos) {
   uv.x *= iResolution.x / iResolution.y;
   
   float d = length(uv);
-  d = sin(d * 12 + iTime) / 12;
+  d = sin(d * 12 + iTime * 0.002) / 12;
   d = abs(d);
   d = smoothstep(0.00, 0.03, d);
   
