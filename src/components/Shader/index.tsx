@@ -11,6 +11,8 @@ vec4 main(vec2 pos) {
   
   float d = length(uv);
   d -= 0.15;
+  d = abs(d);
+  d = step(0.05, d);
   
   return vec4(d, d, d, 1);
 }`)!;
