@@ -3,9 +3,12 @@ import { useWindowDimensions } from 'react-native';
 
 const source = Skia.RuntimeEffect.Make(`
 uniform vec2 iResolution;  
+
  vec4 main(vec2 pos) {
  vec2 uv = pos / iResolution;
  uv = uv * 2 - 1;
+ uv.x *= iResolution.x / iResolution.y;
+   
  float d = length(uv);
 
  return vec4(d, 0.0, 0.0, 1);
