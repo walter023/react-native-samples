@@ -78,7 +78,7 @@ export const VectorReflection: React.FC = () => {
   };
 
   const path = useDerivedValue(() => {
-    let radians = ((angle.value + startAngle) * Math.PI) / 180; // add 90 to adjust for the initial angle
+    let radians = (angle.value * Math.PI) / 180;
     xRay.value = Math.round(xTurret + Math.cos(radians) * height);
     yRay.value = Math.round(yTurret + Math.sin(radians) * height);
     let hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xTurret, y: yTurret });
@@ -88,7 +88,7 @@ export const VectorReflection: React.FC = () => {
 
     let startingPoint = `${hitPoint.x},${hitPoint.y}`;
     let path = `L${startingPoint}L${hitPoint.x + reflectedVector.x * height},${hitPoint.y + reflectedVector.y * height}`; // multiply by the height to make longer the length of the vector
-
+ 
     let x, y;
     for (let i = 0; i < BOUNCES; i++) {
       radians = Math.atan2(reflectedVector.y, reflectedVector.x);
@@ -98,7 +98,7 @@ export const VectorReflection: React.FC = () => {
       normalVector = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
       reflectedVector = reflect(reflectedVector, normalVector);
       path = `${path}L${hitPoint.x},${hitPoint.y} L${reflectedVector.x * height},${reflectedVector.y * height}`;
-    }
+    } 
 
     return `M${xTurret},${yTurret} L${xRay.value},${yRay.value}${path}`;
   }, [angle.value]);
