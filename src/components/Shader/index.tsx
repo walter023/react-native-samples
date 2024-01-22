@@ -18,7 +18,7 @@ vec4 main(vec2 pos) {
   d = 0.002 / d; 
 
   vec3 redColor = vec3(1, 0, 0);
-  
+
   redColor *= d;
   return vec4(redColor, 1);
 }`)!;
@@ -31,7 +31,7 @@ export const TryppyShader = () => {
   const uniforms = useDerivedValue(() => ({ iResolution, iTime: clock.value }), [clock]);
 
   return (
-    <Canvas style={{ flex: 1 }}>
+    <Canvas style={{ flex: 1, width, height, position: 'absolute' }}>
       <Fill>
         <Shader source={source} uniforms={uniforms} />
       </Fill>
