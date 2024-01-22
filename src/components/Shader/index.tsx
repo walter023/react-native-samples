@@ -10,9 +10,9 @@ vec4 main(vec2 pos) {
   uv.x *= iResolution.x / iResolution.y;
   
   float d = length(uv);
-  d -= 0.15;
+  d = sin(d * 12) / 12;
   d = abs(d);
-  d = step(0.05, d);
+  d = smoothstep(0.00, 0.03, d);
   
   return vec4(d, d, d, 1);
 }`)!;
