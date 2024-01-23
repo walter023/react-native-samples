@@ -45,9 +45,9 @@ export const VectorReflection: React.FC = () => {
     const yEdge = slope * (xEdge - origin.x) + origin.y;
     let hitPoint = { x: xEdge, y: yEdge };
     //  vertical case
-    if (yEdge > height || yEdge < 0) {
+    if (yEdge >= height || yEdge <= 0) {
       hitPoint = { x: origin.x - origin.y / slope, y: 0 };
-    } 
+    }
     return { x: Math.round(hitPoint.x), y: Math.round(hitPoint.y) };
   };
 
@@ -69,7 +69,7 @@ export const VectorReflection: React.FC = () => {
     let normalizedVector: Vector2 = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
     let reflectedVector = reflect(incomingVector, normalizedVector);
     let path = `M${hitPoint.x},${hitPoint.y}L${hitPoint.x + reflectedVector.x * height},${hitPoint.y + reflectedVector.y * height}`; // multiply by the height to make longer the length of the vector
-    
+
     let x, y;
     for (let i = 0; i < BOUNCES; i++) {
       radians = Math.atan2(reflectedVector.y, reflectedVector.x);
