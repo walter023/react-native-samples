@@ -45,7 +45,7 @@ export const VectorReflection: React.FC = () => {
     const yEdge = slope * (xEdge - origin.x) + origin.y;
     let hitPoint = { x: xEdge, y: yEdge };
     //  vertical case
-    if (yEdge >= height || yEdge <= 0) {
+    if (yEdge > height || yEdge < 0) {
       hitPoint = { x: origin.x - origin.y / slope, y: 0 };
     }
     return { x: Math.round(hitPoint.x), y: Math.round(hitPoint.y) };
