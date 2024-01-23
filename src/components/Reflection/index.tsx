@@ -68,7 +68,7 @@ export const VectorReflection: React.FC = () => {
     const incomingVector: Vector2 = { x: xRay.value - hitPoint.x, y: yRay.value - hitPoint.y };
     let normalizedVector: Vector2 = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
     let reflectedVector = reflect(incomingVector, normalizedVector);
-    let path = `M${hitPoint.x},${hitPoint.y}L${hitPoint.x + reflectedVector.x * height},${hitPoint.y + reflectedVector.y * height}`; // multiply by the height to make longer the length of the vector
+    let path = `M${hitPoint.x},${hitPoint.y}L${reflectedVector.x * height},${reflectedVector.y * height}`;
 
     let x, y;
     for (let i = 0; i < BOUNCES; i++) {
