@@ -12,8 +12,8 @@ export const VectorReflection: React.FC = () => {
   const initialTime = useRef(Date.now());
   const { width, height } = useWindowDimensions();
   const { startAngle, endAngle } = ANGLE;
-  const yTurret = height / 1.2;
-  const xTurret = width / 2;
+  const yOrigin = height / 1.2;
+  const xOrigin = width / 2;
   const xRay = useSharedValue<number>(0);
   const yRay = useSharedValue<number>(0);
   const angle = useSharedValue<number>(startAngle);
@@ -28,43 +28,26 @@ export const VectorReflection: React.FC = () => {
   /*
    * Calculate the hit point of the screen's edge, using the slope-intercept form of a line:
    * y = mx + b
-   * yTurret = m * xTurret + b
+   * yOrigin = m * xOrigin + b
    * b = y - mx
-   * b = yTurret - m * xTurret
+   * b = yOrigin - m * xOrigin
    * y = mx + b
-   * y = mx + yTurret - m * xTurret.
-   * y = m * (x - xTurret) + yTurret,
-   * y = slope * (xEdge - xTurret) + yTurret,
+   * y = mx + yOrigin - m * xOrigin.
+   * y = m * (x - xOrigin) + yOrigin,
+   * y = slope * (xEdge - xOrigin) + yOrigin,
    * xEdge is the x-coordinate of the edge point. xEdge = (edge === 'right') ? width : 0;.
    */
   const intersectionPoint = (incomingVector: Vector2, origin: Vector2): Vector2 => {
     'worklet';
     const vector = { x: incomingVector.x - origin.x, y: incomingVector.y - origin.y };
     const slope = vector.y / vector.x;
-    let hitPoint, xEdge, yEdge;
-    if (vector.x < 0) {
-      xEdge = 0;
-      yEdge = slope * (xEdge - origin.x) + origin.y;
-      if (yEdge > height || yEdge < 0) {
-        hitPoint = { x: origin.x - origin.y / slope, y: 0 };
-      } else {
-        hitPoint = { x: xEdge, y: yEdge };
-      }
-    }
-    // Check for right edge intersection
-    else if (vector.x > 0) {
-      xEdge = width;
-      yEdge = slope * (xEdge - origin.x) + origin.y;
-      if (yEdge > height || yEdge < 0) {
-        hitPoint = { x: origin.x - origin.y / slope, y: 0 };
-      } else {
-        hitPoint = { x: xEdge, y: yEdge };
-      }
-    }
-    // Check for edge case where laser is vertical
-    else {
-      hitPoint = { x: incomingVector.x, y: incomingVector.y > height ? height : 0 };
-    }
+    const xEdge = vector.x > 0 ? width : 0;
+    const yEdge = slope * (xEdge - origin.x) + origin.y;
+    let hitPoint = { x: xEdge, y: yEdge };
+    //  vertical case
+    if (yEdge > height || yEdge < 0) {
+      hitPoint = { x: origin.x - origin.y / slope, y: 0 };
+    } 
     return { x: Math.round(hitPoint.x), y: Math.round(hitPoint.y) };
   };
 
@@ -79,28 +62,26 @@ export const VectorReflection: React.FC = () => {
 
   const path = useDerivedValue(() => {
     let radians = (angle.value * Math.PI) / 180;
-    xRay.value = Math.round(xTurret + Math.cos(radians) * height);
-    yRay.value = Math.round(yTurret + Math.sin(radians) * height);
-    let hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xTurret, y: yTurret });
-    let normalVector: Vector2 = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
-    let incomingVector: Vector2 = { x: xRay.value - hitPoint.x, y: yRay.value - hitPoint.y };
-    let reflectedVector = reflect(incomingVector, normalVector);
-
-    let startingPoint = `${hitPoint.x},${hitPoint.y}`;
-    let path = `L${startingPoint}L${hitPoint.x + reflectedVector.x * height},${hitPoint.y + reflectedVector.y * height}`; // multiply by the height to make longer the length of the vector
- 
+    xRay.value = Math.round(xOrigin + Math.cos(radians) * height);
+    yRay.value = Math.round(yOrigin + Math.sin(radians) * height);
+    let hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xOrigin, y: yOrigin });
+    const incomingVector: Vector2 = { x: xRay.value - hitPoint.x, y: yRay.value - hitPoint.y };
+    let normalizedVector: Vector2 = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
+    let reflectedVector = reflect(incomingVector, normalizedVector);
+    let path = `M${hitPoint.x},${hitPoint.y}L${hitPoint.x + reflectedVector.x * height},${hitPoint.y + reflectedVector.y * height}`; // multiply by the height to make longer the length of the vector
+    
     let x, y;
     for (let i = 0; i < BOUNCES; i++) {
       radians = Math.atan2(reflectedVector.y, reflectedVector.x);
       x = Math.round(hitPoint.x + Math.cos(radians) * height);
       y = Math.round(hitPoint.y + Math.sin(radians) * height);
       hitPoint = intersectionPoint({ x, y }, hitPoint);
-      normalVector = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
-      reflectedVector = reflect(reflectedVector, normalVector);
-      path = `${path}L${hitPoint.x},${hitPoint.y} L${reflectedVector.x * height},${reflectedVector.y * height}`;
-    } 
+      normalizedVector = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
+      reflectedVector = reflect(reflectedVector, normalizedVector);
+      path += `L${hitPoint.x},${hitPoint.y} L${reflectedVector.x * height},${reflectedVector.y * height}`;
+    }
 
-    return `M${xTurret},${yTurret} L${xRay.value},${yRay.value}${path}`;
+    return `M${xOrigin},${yOrigin} L${xRay.value},${yRay.value}${path}`;
   }, [angle.value]);
 
   const animatedRayPath = useAnimatedProps(() => {
@@ -127,7 +108,7 @@ export const VectorReflection: React.FC = () => {
           strokeLinecap="round"
           strokeDasharray={[40, 15]}
         />
-        <Circle cx={xTurret} cy={yTurret} r="30" fill={Color.VIVID_ORANGE} />
+        <Circle cx={xOrigin} cy={yOrigin} r="30" fill={Color.VIVID_ORANGE} />
       </Svg>
     </>
   );
