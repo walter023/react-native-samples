@@ -14,7 +14,7 @@ export interface Points {
 }
 export interface PointProps {
   style?: ViewStyle;
-  setCtrlPointPosition: () => void;
+  setCtrlPointPosition: (point: Points) => void;
   position: Vector2;
   id: string;
 }
@@ -40,4 +40,12 @@ export enum IconSize {
   MD = 'md',
   LG = 'lg',
   XLG = 'xlg',
+}
+
+export interface IconProps {
+  name: string;
+  size?: IconSize;
+  fill?: string;
+  width?: number;
+  height?: number;
 }

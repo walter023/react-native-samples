@@ -1,9 +1,12 @@
-import { Layout } from '../layout';
-import { ListView } from '../components/List/ListView';
-import { DATA } from '../models';
+import React from 'react';
+import Layout from '../layout/index.tsx';
+import ListView from '../components/List/ListView.tsx';
+import { DATA } from '../models/index.ts';
 
-export const HomeScreen: React.FC = () => (
+const HomeScreen: React.FC = () => (
   <Layout title="React Native Samples" slideInLeft={false}>
-      <ListView listData={DATA} />
+    <ListView listData={DATA} />
   </Layout>
 );
+
+export default HomeScreen;

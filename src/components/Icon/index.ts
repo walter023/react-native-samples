@@ -1,7 +1,9 @@
-import { IconProps, IconSize } from '../../../types';
-import { Icons } from './icons';
+/* eslint-disable indent */
+import React from 'react';
+import { IconProps, IconSize } from '../../../types.ts';
+import { Icons } from './icons.ts';
 
-export const Icon: React.FC<IconProps> = props => {
+const Icon: React.FC<IconProps> = props => {
   const { name, fill = 'black', size = IconSize.MD } = props;
   let { width = 0, height = 0 } = props;
   const renderIcon = Icons[name];
@@ -47,3 +49,4 @@ export const Icon: React.FC<IconProps> = props => {
 
   return renderIcon({ fill, width, height, ...props });
 };
+export default Icon;

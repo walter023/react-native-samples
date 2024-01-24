@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 
-import { IconSize } from '../../../types.tsx';
+import { IconSize } from '../../../types.ts';
 import { NavigationContext } from '../../navigation/index.tsx';
 import * as theme from '../../theme.ts';
-import { Icon } from '../Icon/index.tsx';
+import Icon from '../Icon/index.ts';
 
 const BackButton: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';

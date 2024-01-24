@@ -1,20 +1,21 @@
+/* eslint-disable no-use-before-define */
 import React, { useContext, useEffect } from 'react';
 import { ListRenderItemInfo, Pressable, StyleSheet, Text, useColorScheme, useWindowDimensions, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
-import { isAndroid } from '../../helpers';
-import { DATA } from '../../models';
-import * as theme from '../../theme';
-import { NavigationContext } from '../../navigation';
-import { Icon } from '../Icon';
-import { IconSize } from '../../../types';
-import { Color } from '../../constants';
+import { isAndroid } from '../../helpers/index.tsx';
+import { DATA } from '../../models/index.ts';
+import * as theme from '../../theme.ts';
+import { NavigationContext } from '../../navigation/index.tsx';
+import Icon from '../Icon/index.ts';
+import { IconSize } from '../../../types.ts';
+import { Color } from '../../constants/index.ts';
 
 interface ListItemProps {
-  data: ListRenderItemInfo<typeof DATA[0]>;
+  data: ListRenderItemInfo<(typeof DATA)[0]>;
 }
 
-export const ListItem: React.FC<ListItemProps> = ({ data }) => {
+const ListItem: React.FC<ListItemProps> = ({ data }) => {
   const { navigate } = useContext(NavigationContext);
   const isDarkMode = useColorScheme() === 'dark';
   const { width } = useWindowDimensions();
@@ -113,3 +114,5 @@ const themeStyles = (isDarkMode: boolean) =>
       paddingVertical: 4,
     },
   });
+
+export default ListItem;

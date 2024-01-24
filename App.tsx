@@ -1,7 +1,7 @@
 import React from 'react';
-import {ContextNavigation} from './src/navigation';
+import { ContextNavigation } from './src/navigation/index.tsx';
 
-function App(): JSX.Element {
+function App(): React.JSX.Element {
   return <ContextNavigation />;
 }
 

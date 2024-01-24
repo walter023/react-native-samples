@@ -1,12 +1,13 @@
-import { Layout } from '../layout';
-import { VectorReflection } from '../components/Reflection';
-import { BackButton } from '../components/BackButton';
+import React from 'react';
+import Layout from '../layout/index.tsx';
+import VectorReflection from '../components/Reflection/index.tsx';
+import BackButton from '../components/BackButton/index.tsx';
 
-export const VectorReflectionScreen: React.FC = () => {
-  return (
-    <Layout>
-      <BackButton />
-      <VectorReflection />
-    </Layout>
-  );
-};
+const VectorReflectionScreen: React.FC = () => (
+  <Layout>
+    <BackButton />
+    <VectorReflection />
+  </Layout>
+);
+
+export default VectorReflectionScreen;

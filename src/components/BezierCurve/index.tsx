@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import React, { Fragment, useEffect } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
@@ -11,13 +12,13 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { Points as PointsPros } from '../../../types';
-import { ControlPointsInitState } from '../../models';
-import { Color, R, BEZIER_DURATION } from '../../constants';
-import { lerp } from '../../helpers';
-import { ControlPoint } from './ControlPoint';
+import { Points as PointsPros } from '../../../types.ts';
+import { ControlPointsInitState } from '../../models/index.ts';
+import { Color, R, BEZIER_DURATION } from '../../constants/index.ts';
+import { lerp } from '../../helpers/index.tsx';
+import ControlPoint from './ControlPoint.tsx';
 
-export const Beziercurve: React.FC = () => {
+const Beziercurve: React.FC = () => {
   const AnimatedPath = Animated.createAnimatedComponent(Path);
   const { width, height } = useWindowDimensions();
   const ctrlPoints = useSharedValue<PointsPros>(ControlPointsInitState);
@@ -36,7 +37,7 @@ export const Beziercurve: React.FC = () => {
     if (point) {
       const newState = { ...ctrlPoints.value, ...point };
       ctrlPoints.value = newState;
-      //initial positions
+      // initial positions
       sideAX.value = ctrlPoints.value.p1.x;
       sideAY.value = ctrlPoints.value.p1.y;
       sideBX.value = ctrlPoints.value.p2.x;
@@ -91,23 +92,17 @@ export const Beziercurve: React.FC = () => {
     return { d: `M${curveStarts} Q${curvePositionAndDepth} ${curveEnds}` };
   });
 
-  const ballSideA = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: sideAX.value }, { translateY: sideAY.value }],
-    };
-  });
+  const ballSideA = useAnimatedStyle(() => ({
+    transform: [{ translateX: sideAX.value }, { translateY: sideAY.value }],
+  }));
 
-  const ballSideB = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: sideBX.value }, { translateY: sideBY.value }],
-    };
-  });
+  const ballSideB = useAnimatedStyle(() => ({
+    transform: [{ translateX: sideBX.value }, { translateY: sideBY.value }],
+  }));
 
-  const bezierBall = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: bezeirX.value }, { translateY: bezeirY.value }],
-    };
-  });
+  const bezierBall = useAnimatedStyle(() => ({
+    transform: [{ translateX: bezeirX.value }, { translateY: bezeirY.value }],
+  }));
   return (
     <View style={styles.container}>
       <ControlPoint setCtrlPointPosition={setCtrlPointPosition} style={styles.p0} position={ctrlPoints.value.p0} id="p0" />
@@ -191,3 +186,5 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
 });
+
+export default Beziercurve;

@@ -1,13 +1,14 @@
+/* eslint-disable no-use-before-define */
 import React from 'react';
 import { StyleSheet, FlatList } from 'react-native';
-import { ListItem } from './ListItem';
-import { ListType } from '../../../types';
+import ListItem from './ListItem.tsx';
+import { ListType } from '../../../types.ts';
 
 interface Props {
   listData: ListType[];
 }
 
-export const ListView: React.FC<Props> = ({ listData }) => (
+const ListView: React.FC<Props> = ({ listData }) => (
   <FlatList
     style={styles.listSpace}
     contentContainerStyle={styles.listcontainer}
@@ -28,3 +29,5 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
 });
+
+export default ListView;

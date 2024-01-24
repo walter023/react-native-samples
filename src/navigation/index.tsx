@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Screens } from '../constants';
-import { HomeScreen } from '../screens/Home';
-import { BezierCurveScreen } from '../screens/BezierCurve';
-import { VectorReflectionScreen } from '../screens/VectorReflection';
-import { RopeEffectScreen } from '../screens/RopeEffect';
-import { ShaderScreen } from '../screens/Shader';
+import { Screens } from '../constants/index.ts';
+import HomeScreen from '../screens/Home.tsx';
+import BezierCurveScreen from '../screens/BezierCurve.tsx';
+import VectorReflectionScreen from '../screens/VectorReflection.tsx';
+import RopeEffectScreen from '../screens/RopeEffect.tsx';
+import ShaderScreen from '../screens/Shader.tsx';
 
 const templateScreen: { [key: string]: React.JSX.Element } = {
   [Screens.HOME]: <HomeScreen />,

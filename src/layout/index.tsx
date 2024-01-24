@@ -1,11 +1,12 @@
-import { ReactNode, useEffect } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, useColorScheme, useWindowDimensions, View, ViewStyle } from 'react-native';
+/* eslint-disable no-use-before-define */
+import React, { useEffect } from 'react';
+import { SafeAreaView, StatusBar, StyleSheet, Text, useColorScheme, useWindowDimensions, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import { Color } from '../constants';
-import { LayoutProps } from '../../types';
-import * as theme from '../theme';
+import { Color } from '../constants/index.ts';
+import { LayoutProps } from '../../types.ts';
+import * as theme from '../theme.ts';
 
-export const Layout: React.FC<LayoutProps> = ({ children, slideInLeft = true, title, style }) => {
+const Layout: React.FC<LayoutProps> = ({ children, slideInLeft = true, title, style }) => {
   const isDarkMode = useColorScheme() === 'dark';
   const { width } = useWindowDimensions();
   const translateX = useSharedValue(width);
@@ -13,7 +14,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, slideInLeft = true, ti
 
   useEffect(() => {
     translateX.value = withTiming(0, { duration: 500 });
-  }, []);
+  }, [translateX]);
 
   const animateStyles = useAnimatedStyle(() => ({
     transform: [{ translateX: translateX.value }],
@@ -57,3 +58,5 @@ const styles = (isDarkMode: boolean) =>
       color: isDarkMode ? Color.WHITE : Color.BLACK,
     },
   });
+
+export default Layout;
