@@ -1,12 +1,13 @@
-import { Layout } from '../layout';
-import { BackButton } from '../components/BackButton';
-import { Rings } from '../components/Shader';
+import React from 'react';
+import { Layout } from '../layout/index.tsx';
+import { BackButton } from '../components/BackButton/index.tsx';
+import { Rings } from '../components/Shader/index.tsx';
 
-export const ShaderScreen: React.FC = () => {
-  return (
-    <Layout>
-      <BackButton />
-      <Rings />
-    </Layout>
-  );
-};
+const ShaderScreen: React.FC = () => (
+  <Layout>
+    <BackButton />
+    <Rings />
+  </Layout>
+);
+
+export default ShaderScreen;
