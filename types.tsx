@@ -1,11 +1,5 @@
 import { ReactNode } from 'react';
-import { ViewStyle } from 'react-native/types';
-export interface PointProps {
-  style?: ViewStyle;
-  setCtrlPointPosition: (points: Points) => void;
-  position: Vector2;
-  id: string;
-}
+import { ViewStyle } from 'react-native';
 
 export interface Vector2 {
   x: number;
@@ -17,6 +11,12 @@ export interface Points {
     x: number;
     y: number;
   };
+}
+export interface PointProps {
+  style?: ViewStyle;
+  setCtrlPointPosition: () => void;
+  position: Vector2;
+  id: string;
 }
 
 export interface LayoutProps {

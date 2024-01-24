@@ -28,6 +28,10 @@ module.exports = {
     'react/forbid-prop-types': 0,
     'react/prop-types': 0,
     'react/require-default-props': 0,
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'warn',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
     'react/jsx-filename-extension': [
       1,
       {
