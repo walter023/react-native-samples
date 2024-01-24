@@ -53,10 +53,10 @@ export const VectorReflection: React.FC = () => {
 
   const reflect = (incomingVector: Vector2, normalVector: Vector2): Vector2 => {
     'worklet';
-    const dotProduct = incomingVector.x * normalVector.x + incomingVector.y * normalVector.y;
+    const scalarProjection = incomingVector.x * normalVector.x + incomingVector.y * normalVector.y;
     return {
-      x: incomingVector.x - 2 * dotProduct * normalVector.x,
-      y: incomingVector.y - 2 * dotProduct * normalVector.y,
+      x: incomingVector.x - 2 * scalarProjection * normalVector.x,
+      y: incomingVector.y - 2 * scalarProjection * normalVector.y,
     };
   };
 
