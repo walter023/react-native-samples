@@ -1,14 +1,15 @@
-import { BezierCurve } from '../../assets/menu/BezierCurve';
-import { Axis } from '../../assets/menu/Axis';
-import { Length } from '../../assets/menu/Length';
-import { Turret } from '../../assets/menu/LaserTurret';
-import { BackButton } from '../../assets/menu/BackButton';
+import { BezierCurve } from '../../assets/menu/BezierCurve.tsx';
+import Axis from '../../assets/menu/Axis.tsx';
+import { Length } from '../../assets/menu/Length.tsx';
+import { Turret } from '../../assets/menu/LaserTurret.tsx';
+import { BackButton } from '../../assets/menu/BackButton.tsx';
 
-
-export const Icons: { [key: string]: any } = {
+const Icons: { [key: string]: any } = {
   bezierCurve: BezierCurve,
   axis: Axis,
   length: Length,
   turret: Turret,
   backButton: BackButton,
 };
+
+export default Icons;

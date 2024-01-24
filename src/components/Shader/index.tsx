@@ -1,3 +1,4 @@
+import React from 'react';
 import { Skia, Canvas, Shader, Fill, vec, useClock } from '@shopify/react-native-skia';
 import { useWindowDimensions } from 'react-native';
 import { useDerivedValue } from 'react-native-reanimated';
@@ -23,7 +24,7 @@ vec4 main(vec2 pos) {
   return vec4(redColor, 1);
 }`)!;
 
-export const Rings = () => {
+const Rings = () => {
   const { height, width } = useWindowDimensions();
   const iResolution = vec(width, height);
   const clock = useClock();
@@ -37,3 +38,5 @@ export const Rings = () => {
     </Canvas>
   );
 };
+
+export default Rings;
