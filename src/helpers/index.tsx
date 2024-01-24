@@ -11,6 +11,7 @@ export const isAndroid = Platform.OS !== 'ios';
  * @param {t} t -The parameter t moves from 0 to 1 e.g 0.15
  * @returns  The new interpolation point for x and y  */
 export const lerp = (startPoint: number, endPoint: number, t: number): number => {
-  "worklet";
+  'worklet';
+
   return startPoint + (endPoint - startPoint) * t;
 };

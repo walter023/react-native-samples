@@ -1,16 +1,17 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 
-import { IconSize } from '../../../types';
-import { NavigationContext } from '../../navigation';
-import * as theme from '../../theme';
-import { Icon } from '../Icon';
+import { IconSize } from '../../../types.tsx';
+import { NavigationContext } from '../../navigation/index.tsx';
+import * as theme from '../../theme.ts';
+import { Icon } from '../Icon/index.tsx';
 
-export const BackButton: React.FC = () => {
+const BackButton: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const { back } = useContext(NavigationContext);
 
   return (
+    // eslint-disable-next-line no-use-before-define
     <TouchableOpacity style={themeStyles(isDarkMode).container} onPress={back}>
       <Icon name="backButton" size={IconSize.MD} fill={theme.home(!isDarkMode).headerBg} />
     </TouchableOpacity>
@@ -34,3 +35,5 @@ const themeStyles = (isDarkMode: boolean) =>
       justifyContent: 'flex-end',
     },
   });
+
+export default BackButton;

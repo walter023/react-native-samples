@@ -1,13 +1,13 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Svg, { Path, PathProps, Circle } from 'react-native-svg';
 import { useColorScheme, useWindowDimensions } from 'react-native';
 import Animated, { useSharedValue, withRepeat, withTiming, useAnimatedProps, useDerivedValue } from 'react-native-reanimated';
 
-import { Vector2 } from '../../../types';
-import { Color, ANGLE, DURATION, BOUNCES } from '../../constants';
-import * as theme from '../../theme';
+import { Vector2 } from '../../../types.ts';
+import { Color, ANGLE, DURATION, BOUNCES } from '../../constants/index.ts';
+import * as theme from '../../theme.ts';
 
-export const VectorReflection: React.FC = () => {
+const VectorReflection: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const initialTime = useRef(Date.now());
   const { width, height } = useWindowDimensions();
@@ -39,6 +39,7 @@ export const VectorReflection: React.FC = () => {
    */
   const intersectionPoint = (incomingVector: Vector2, origin: Vector2): Vector2 => {
     'worklet';
+
     const vector = { x: incomingVector.x - origin.x, y: incomingVector.y - origin.y };
     const slope = vector.y / vector.x;
     const xEdge = vector.x > 0 ? width : 0;
@@ -53,6 +54,7 @@ export const VectorReflection: React.FC = () => {
 
   const reflect = (incomingVector: Vector2, normalVector: Vector2): Vector2 => {
     'worklet';
+
     const scalarProjection = incomingVector.x * normalVector.x + incomingVector.y * normalVector.y;
     return {
       x: incomingVector.x - 2 * scalarProjection * normalVector.x,
@@ -68,32 +70,32 @@ export const VectorReflection: React.FC = () => {
     const incomingVector: Vector2 = { x: xRay.value - hitPoint.x, y: yRay.value - hitPoint.y };
     let normalizedVector: Vector2 = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
     let reflectedVector = reflect(incomingVector, normalizedVector);
-    let path = `M${hitPoint.x},${hitPoint.y}L${reflectedVector.x * height},${reflectedVector.y * height}`;
+    let reflectionPath = `M${hitPoint.x},${hitPoint.y}L${reflectedVector.x * height},${reflectedVector.y * height}`;
 
-    let x, y;
-    for (let i = 0; i < BOUNCES; i++) {
+    let x: number;
+    let y: number;
+    for (let i = 0; i < BOUNCES; i += 1) {
       radians = Math.atan2(reflectedVector.y, reflectedVector.x);
       x = Math.round(hitPoint.x + Math.cos(radians) * height);
       y = Math.round(hitPoint.y + Math.sin(radians) * height);
       hitPoint = intersectionPoint({ x, y }, hitPoint);
       normalizedVector = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
       reflectedVector = reflect(reflectedVector, normalizedVector);
-      path += `L${hitPoint.x},${hitPoint.y} L${reflectedVector.x * height},${reflectedVector.y * height}`;
+      reflectionPath += `L${hitPoint.x},${hitPoint.y} L${reflectedVector.x * height},${reflectedVector.y * height}`;
     }
 
-    return `M${xOrigin},${yOrigin} L${xRay.value},${yRay.value}${path}`;
+    return `M${xOrigin},${yOrigin} L${xRay.value},${yRay.value}${reflectionPath}`;
   }, [angle.value]);
 
-  const animatedRayPath = useAnimatedProps(() => {
-    return { d: path.value };
-  });
+  const animatedRayPath = useAnimatedProps(() => ({ d: path.value }));
 
-  const laserEffectPath = useAnimatedProps(() => {
-    return {
+  const laserEffectPath = useAnimatedProps(
+    () => ({
       d: path.value,
       strokeDashoffset: ((Date.now() - initialTime.current) / 1000) * -loop.value,
-    };
-  }, [path, loop]);
+    }),
+    [path, loop],
+  );
 
   return (
     <>
@@ -113,3 +115,5 @@ export const VectorReflection: React.FC = () => {
     </>
   );
 };
+
+export default VectorReflection;
