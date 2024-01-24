@@ -1,11 +1,12 @@
-import { Layout } from '../layout';
-import { BackButton } from '../components/BackButton';
+import React from 'react';
+import { Layout } from '../layout/index.tsx';
+import { BackButton } from '../components/BackButton/index.tsx';
 
-export const RopeEffectScreen: React.FC = () => {
-  return (
-    <Layout>
-      <BackButton />
-      {/*  TODO:  <RopeEffect /> */}
-    </Layout>
-  );
-};
+const RopeEffectScreen: React.FC = () => (
+  <Layout>
+    <BackButton />
+    {/*  TODO:  <RopeEffect /> */}
+  </Layout>
+);
+
+export default RopeEffectScreen;
