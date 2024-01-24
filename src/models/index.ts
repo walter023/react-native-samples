@@ -1,7 +1,8 @@
-import { Screens } from '../constants';
-import { ListType, Points } from '../../types';
 import { useWindowDimensions } from 'react-native';
+import { Screens } from '../constants/index.ts';
+import { ListType, Points } from '../../types.ts';
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 const { width, height } = useWindowDimensions();
 
 export const DATA: ListType[] = [
@@ -12,13 +13,19 @@ export const DATA: ListType[] = [
     screenName: Screens.BEZIER_CURVE,
   },
   {
+    name: 'Vector Reflection With Skia',
+    description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & skia.',
+    icon: 'turret',
+    screenName: Screens.VECTOR_REFLECTION_SKIA,
+  },
+  {
     name: 'Shader (Rings)',
     description: 'Learning and playing with shaders using reanimated, skia & glsl.',
     icon: 'axis',
     screenName: Screens.SHADER,
   },
   {
-    name: 'Vector Reflection',
+    name: 'Vector Reflection with SVG',
     description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & svg.',
     icon: 'turret',
     screenName: Screens.VECTOR_REFLECTION,

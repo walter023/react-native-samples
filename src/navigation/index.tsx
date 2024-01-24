@@ -5,12 +5,14 @@ import BezierCurveScreen from '../screens/BezierCurve.tsx';
 import VectorReflectionScreen from '../screens/VectorReflection.tsx';
 import RopeEffectScreen from '../screens/RopeEffect.tsx';
 import ShaderScreen from '../screens/Shader.tsx';
+import ReflectionSkiaScreen from '../screens/ReflectionSkia.tsx';
 
 const templateScreen: { [key: string]: React.JSX.Element } = {
   [Screens.HOME]: <HomeScreen />,
   [Screens.BEZIER_CURVE]: <BezierCurveScreen />,
   [Screens.VECTOR_REFLECTION]: <VectorReflectionScreen />,
   [Screens.ROPE_EFFECT]: <RopeEffectScreen />,
+  [Screens.VECTOR_REFLECTION_SKIA]: <ReflectionSkiaScreen />,
   [Screens.SHADER]: <ShaderScreen />,
 };
 
