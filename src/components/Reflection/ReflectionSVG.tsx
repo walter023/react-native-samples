@@ -3,6 +3,7 @@ import Svg, { Path, PathProps, Circle } from 'react-native-svg';
 import { useColorScheme, useWindowDimensions } from 'react-native';
 import Animated, { useSharedValue, withRepeat, withTiming, useAnimatedProps, useDerivedValue } from 'react-native-reanimated';
 
+import { intersectionPoint, reflect } from '../../helpers/index.tsx';
 import { Vector2 } from '../../../types.ts';
 import { Color, ANGLE, DURATION, BOUNCES } from '../../constants/index.ts';
 import * as theme from '../../theme.ts';
@@ -25,48 +26,11 @@ const VectorReflection: React.FC = () => {
     loop.value = withRepeat(withTiming(100), -1, false);
   });
 
-  /*
-   * Calculate the hit point of the screen's edge, using the slope-intercept form of a line:
-   * y = mx + b
-   * yOrigin = m * xOrigin + b
-   * b = y - mx
-   * b = yOrigin - m * xOrigin
-   * y = mx + b
-   * y = mx + yOrigin - m * xOrigin.
-   * y = m * (x - xOrigin) + yOrigin,
-   * y = slope * (xEdge - xOrigin) + yOrigin,
-   * xEdge is the x-coordinate of the edge point. xEdge = (edge === 'right') ? width : 0;.
-   */
-  const intersectionPoint = (incomingVector: Vector2, origin: Vector2): Vector2 => {
-    'worklet';
-
-    const vector = { x: incomingVector.x - origin.x, y: incomingVector.y - origin.y };
-    const slope = vector.y / vector.x;
-    const xEdge = vector.x > 0 ? width : 0;
-    const yEdge = slope * (xEdge - origin.x) + origin.y;
-    let hitPoint = { x: xEdge, y: yEdge };
-    //  vertical case
-    if (yEdge > height || yEdge < 0) {
-      hitPoint = { x: origin.x - origin.y / slope, y: 0 };
-    }
-    return { x: Math.round(hitPoint.x), y: Math.round(hitPoint.y) };
-  };
-
-  const reflect = (incomingVector: Vector2, normalVector: Vector2): Vector2 => {
-    'worklet';
-
-    const scalarProjection = incomingVector.x * normalVector.x + incomingVector.y * normalVector.y;
-    return {
-      x: incomingVector.x - 2 * scalarProjection * normalVector.x,
-      y: incomingVector.y - 2 * scalarProjection * normalVector.y,
-    };
-  };
-
   const path = useDerivedValue(() => {
     let radians = (angle.value * Math.PI) / 180;
     xRay.value = Math.round(xOrigin + Math.cos(radians) * height);
     yRay.value = Math.round(yOrigin + Math.sin(radians) * height);
-    let hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xOrigin, y: yOrigin });
+    let hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xOrigin, y: yOrigin }, width, height);
     const incomingVector: Vector2 = { x: xRay.value - hitPoint.x, y: yRay.value - hitPoint.y };
     let normalizedVector: Vector2 = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
     let reflectedVector = reflect(incomingVector, normalizedVector);
@@ -78,7 +42,7 @@ const VectorReflection: React.FC = () => {
       radians = Math.atan2(reflectedVector.y, reflectedVector.x);
       x = Math.round(hitPoint.x + Math.cos(radians) * height);
       y = Math.round(hitPoint.y + Math.sin(radians) * height);
-      hitPoint = intersectionPoint({ x, y }, hitPoint);
+      hitPoint = intersectionPoint({ x, y }, hitPoint, width, height);
       normalizedVector = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
       reflectedVector = reflect(reflectedVector, normalizedVector);
       reflectionPath += `L${hitPoint.x},${hitPoint.y} L${reflectedVector.x * height},${reflectedVector.y * height}`;
@@ -87,8 +51,6 @@ const VectorReflection: React.FC = () => {
     return `M${xOrigin},${yOrigin} L${xRay.value},${yRay.value}${reflectionPath}`;
   }, [angle.value]);
 
-  const animatedRayPath = useAnimatedProps(() => ({ d: path.value }));
-
   const laserEffectPath = useAnimatedProps(
     () => ({
       d: path.value,
@@ -96,6 +58,8 @@ const VectorReflection: React.FC = () => {
     }),
     [path, loop],
   );
+  
+  const animatedRayPath = useAnimatedProps(() => ({ d: path.value }));
 
   return (
     <>
