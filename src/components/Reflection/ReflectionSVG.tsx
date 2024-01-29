@@ -5,7 +5,7 @@ import Animated, { useSharedValue, withRepeat, withTiming, useAnimatedProps, use
 
 import { intersectionPoint, reflect } from '../../helpers/index.tsx';
 import { Vector2 } from '../../../types.ts';
-import { Color, ANGLE, DURATION, BOUNCES } from '../../constants/index.ts';
+import { Colors, ANGLE, DURATION, BOUNCES } from '../../constants/index.ts';
 import * as theme from '../../theme.ts';
 
 const VectorReflection: React.FC = () => {
@@ -65,7 +65,7 @@ const VectorReflection: React.FC = () => {
   return (
     <>
       <Svg height={height} width={width}>
-        <AnimatedPath animatedProps={animatedRayPath} fill="none" strokeWidth={2} stroke={Color.RED} />
+        <AnimatedPath animatedProps={animatedRayPath} fill="none" strokeWidth={2} stroke={Colors.RED} />
         <AnimatedPath
           animatedProps={laserEffectPath}
           stroke={theme.home(isDarkMode).listItemBg}
@@ -75,7 +75,7 @@ const VectorReflection: React.FC = () => {
           strokeLinecap="round"
           strokeDasharray={[40, 15]}
         />
-        <Circle cx={xOrigin} cy={yOrigin} r="30" fill={Color.VIVID_ORANGE} />
+        <Circle cx={xOrigin} cy={yOrigin} r="30" fill={Colors.VIVID_ORANGE} />
       </Svg>
     </>
   );

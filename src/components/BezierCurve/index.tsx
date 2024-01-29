@@ -14,7 +14,7 @@ import Animated, {
 
 import { Points as PointsPros } from '../../../types.ts';
 import { ControlPointsInitState } from '../../models/index.ts';
-import { Color, R, BEZIER_DURATION } from '../../constants/index.ts';
+import { Colors, R, BEZIER_DURATION } from '../../constants/index.ts';
 import { lerp } from '../../helpers/index.tsx';
 import ControlPoint from './ControlPoint.tsx';
 
@@ -109,9 +109,9 @@ const Beziercurve: React.FC = () => {
       <ControlPoint setCtrlPointPosition={setCtrlPointPosition} style={styles.p1} position={ctrlPoints.value.p1} id="p1" />
       <ControlPoint setCtrlPointPosition={setCtrlPointPosition} style={styles.p2} position={ctrlPoints.value.p2} id="p2" />
       <Svg width={width} height={height} style={styles.canvas}>
-        <AnimatedPath animatedProps={triangulePath} fill="none" strokeWidth={2} stroke={Color.RED} />
-        <AnimatedPath animatedProps={connectorPath} fill="none" strokeWidth={2} stroke={Color.RED} />
-        <AnimatedPath animatedProps={bezierCurvePath} fill="none" strokeWidth={4} stroke={Color.CYAN} />
+        <AnimatedPath animatedProps={triangulePath} fill="none" strokeWidth={2} stroke={Colors.RED} />
+        <AnimatedPath animatedProps={connectorPath} fill="none" strokeWidth={2} stroke={Colors.RED} />
+        <AnimatedPath animatedProps={bezierCurvePath} fill="none" strokeWidth={4} stroke={Colors.CYAN} />
       </Svg>
       <Fragment>
         <Animated.View style={[styles.l1, ballSideA]} />
@@ -127,19 +127,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   p0: {
-    backgroundColor: Color.SOFT_RED,
+    backgroundColor: Colors.SOFT_RED,
     left: -5,
     zIndex: 1,
     borderRadius: R * 2,
   },
   p1: {
-    backgroundColor: Color.SOFT_BLUE,
+    backgroundColor: Colors.SOFT_BLUE,
     left: -5,
     zIndex: 1,
     borderRadius: R * 2,
   },
   p2: {
-    backgroundColor: Color.GREEN,
+    backgroundColor: Colors.GREEN,
     left: -5,
     zIndex: 1,
     borderRadius: R * 2,
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: R,
-    backgroundColor: Color.CYAN,
+    backgroundColor: Colors.CYAN,
     position: 'absolute',
     zIndex: 1,
   },

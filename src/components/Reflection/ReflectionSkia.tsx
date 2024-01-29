@@ -4,7 +4,7 @@ import { interpolateColor, useDerivedValue, useSharedValue, withRepeat, withTimi
 import { useWindowDimensions } from 'react-native';
 
 import { intersectionPoint, reflect } from '../../helpers/index.tsx';
-import { ANGLE, Color, DURATION } from '../../constants/index.ts';
+import { ANGLE, Colors, DURATION } from '../../constants/index.ts';
 import { Vector2 } from '../../../types.ts';
 
 const ReflectionSkia: React.FC = () => {
@@ -39,7 +39,7 @@ const ReflectionSkia: React.FC = () => {
     path.lineTo(reflectedVector.x * height, reflectedVector.y * height);
   });
 
-  const color = useDerivedValue(() => interpolateColor(loop.value, [0, 300], [Color.PALE_PINK, Color.SOFT_RED]), [loop]);
+  const color = useDerivedValue(() => interpolateColor(loop.value, [0, 300], [Colors.PALE_PINK, Colors.SOFT_RED]), [loop]);
 
   return (
     <Canvas style={{ flex: 1 }}>

@@ -7,7 +7,7 @@ export const Screens = {
   SHADER: 'SHADER',
 };
 
-export const Color = {
+export const Colors = {
   SOFT_BLUE: '#8ecae6',
   STRONG_CYAN: '#219ebc',
   BRIGHT_VIOLET: '#8338ec',

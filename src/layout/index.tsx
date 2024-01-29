@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, Text, useColorScheme, useWindowDimensions, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import { Color } from '../constants/index.ts';
+import { Colors } from '../constants/index.ts';
 import { LayoutProps } from '../../types.ts';
 import * as theme from '../theme.ts';
 
@@ -55,7 +55,7 @@ const styles = (isDarkMode: boolean) =>
       fontWeight: '600',
       textAlign: 'center',
       textAlignVertical: 'center',
-      color: isDarkMode ? Color.WHITE : Color.BLACK,
+      color: isDarkMode ? Colors.WHITE : Colors.BLACK,
     },
   });
 

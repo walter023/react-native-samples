@@ -4,7 +4,7 @@ import { StyleSheet, useWindowDimensions } from 'react-native';
 import Animated, { runOnJS, useAnimatedStyle, useSharedValue, withDecay } from 'react-native-reanimated';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { PointProps } from '../../../types.ts';
-import { Color } from '../../constants/index.ts';
+import { Colors } from '../../constants/index.ts';
 
 const ControlPoint: React.FC<PointProps> = ({ style, setCtrlPointPosition, position, id }) => {
   const translateX = useSharedValue(position.x);
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     zIndex: 1,
     position: 'absolute',
-    shadowColor: Color.BLACK,
+    shadowColor: Colors.BLACK,
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.5,
     shadowRadius: 2,
