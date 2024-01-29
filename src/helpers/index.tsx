@@ -1,8 +1,6 @@
 import { Platform } from 'react-native';
 import { Vector2 } from '../../types.ts';
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-
 export const isIos = Platform.OS === 'ios';
 
 export const isAndroid = Platform.OS !== 'ios';
@@ -31,16 +29,16 @@ export const lerp = (startPoint: number, endPoint: number, t: number): number =>
  * y = slope * (xEdge - xOrigin) + yOrigin,
  * xEdge is the x-coordinate of the edge point. xEdge = (edge === 'right') ? width : 0;.
  */
-export const intersectionPoint = (incomingVector: Vector2, origin: Vector2, width: number, height: number): Vector2 => {
+export const intersectionPoint = (incomingVector: Vector2, origin: Vector2, resolution: Vector2): Vector2 => {
   'worklet';
 
   const vector = { x: incomingVector.x - origin.x, y: incomingVector.y - origin.y };
   const slope = vector.y / vector.x;
-  const xEdge = vector.x > 0 ? width : 0;
+  const xEdge = vector.x > 0 ? resolution.x : 0;
   const yEdge = slope * (xEdge - origin.x) + origin.y;
   let hitPoint = { x: xEdge, y: yEdge };
   //  vertical case
-  if (yEdge > height || yEdge < 0) {
+  if (yEdge > resolution.y || yEdge < 0) {
     hitPoint = { x: origin.x - origin.y / slope, y: 0 };
   }
   return { x: Math.round(hitPoint.x), y: Math.round(hitPoint.y) };

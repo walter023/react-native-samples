@@ -22,13 +22,13 @@ const ReflectionSkia: React.FC = () => {
     loop.value = withRepeat(withTiming(100), -1, false);
   });
 
-  const clip = usePathValue(path => {
+  const pathValue = usePathValue(path => {
     'worklet';
 
     const radians = (angle.value * Math.PI) / 180;
     xRay.value = Math.round(xOrigin + Math.cos(radians) * height);
     yRay.value = Math.round(yOrigin + Math.sin(radians) * height);
-    const hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xOrigin, y: yOrigin }, width, height);
+    const hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xOrigin, y: yOrigin }, { x: width, y: height });
     const incomingVector: Vector2 = { x: xRay.value - hitPoint.x, y: yRay.value - hitPoint.y };
     const normalizedVector: Vector2 = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
     const reflectedVector = reflect(incomingVector, normalizedVector);
@@ -40,8 +40,8 @@ const ReflectionSkia: React.FC = () => {
   });
 
   return (
-    <Canvas style={{ flex: 1, width: '100%', height: '100%' }}>
-      <Path path={clip} color="lightblue" style="stroke" />
+    <Canvas style={{ flex: 1 }}>
+      <Path path={pathValue} color="lightblue" style="stroke" />
     </Canvas>
   );
 };

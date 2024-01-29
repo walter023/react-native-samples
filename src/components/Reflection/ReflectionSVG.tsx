@@ -27,10 +27,11 @@ const VectorReflection: React.FC = () => {
   });
 
   const path = useDerivedValue(() => {
+    const resolution = { x: width, y: height };
     let radians = (angle.value * Math.PI) / 180;
     xRay.value = Math.round(xOrigin + Math.cos(radians) * height);
     yRay.value = Math.round(yOrigin + Math.sin(radians) * height);
-    let hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xOrigin, y: yOrigin }, width, height);
+    let hitPoint = intersectionPoint({ x: xRay.value, y: yRay.value }, { x: xOrigin, y: yOrigin }, resolution);
     const incomingVector: Vector2 = { x: xRay.value - hitPoint.x, y: yRay.value - hitPoint.y };
     let normalizedVector: Vector2 = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
     let reflectedVector = reflect(incomingVector, normalizedVector);
@@ -42,7 +43,7 @@ const VectorReflection: React.FC = () => {
       radians = Math.atan2(reflectedVector.y, reflectedVector.x);
       x = Math.round(hitPoint.x + Math.cos(radians) * height);
       y = Math.round(hitPoint.y + Math.sin(radians) * height);
-      hitPoint = intersectionPoint({ x, y }, hitPoint, width, height);
+      hitPoint = intersectionPoint({ x, y }, hitPoint, resolution);
       normalizedVector = hitPoint.y ? { x: -1, y: 0 } : { x: 0, y: -1 };
       reflectedVector = reflect(reflectedVector, normalizedVector);
       reflectionPath += `L${hitPoint.x},${hitPoint.y} L${reflectedVector.x * height},${reflectedVector.y * height}`;
@@ -58,7 +59,7 @@ const VectorReflection: React.FC = () => {
     }),
     [path, loop],
   );
-  
+
   const animatedRayPath = useAnimatedProps(() => ({ d: path.value }));
 
   return (
