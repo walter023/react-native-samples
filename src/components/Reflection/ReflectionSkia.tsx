@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BlurMask, Canvas, Path, usePathValue } from '@shopify/react-native-skia';
-import { useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
+import { interpolateColor, useDerivedValue, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import { useWindowDimensions } from 'react-native';
 
 import { intersectionPoint, reflect } from '../../helpers/index.tsx';
@@ -39,10 +39,12 @@ const ReflectionSkia: React.FC = () => {
     path.lineTo(reflectedVector.x * height, reflectedVector.y * height);
   });
 
+  const color = useDerivedValue(() => interpolateColor(loop.value, [0, 300], [Color.PALE_PINK, Color.SOFT_RED]), [loop]);
+
   return (
     <Canvas style={{ flex: 1 }}>
-      <Path path={pathValue} color={Color.CYAN} style="stroke" strokeWidth={2} />
-      <Path path={pathValue} color={Color.CYAN} strokeWidth={2}>
+      <Path path={pathValue} color={color} style="stroke" strokeWidth={2} />
+      <Path path={pathValue} color={color} strokeWidth={2}>
         <BlurMask blur={6} style="outer" />
       </Path>
     </Canvas>
