@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { Canvas, Path, usePathValue } from '@shopify/react-native-skia';
+import { BlurMask, Canvas, Path, usePathValue } from '@shopify/react-native-skia';
 import { useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import { useWindowDimensions } from 'react-native';
 
 import { intersectionPoint, reflect } from '../../helpers/index.tsx';
-import { ANGLE, DURATION } from '../../constants/index.ts';
+import { ANGLE, Color, DURATION } from '../../constants/index.ts';
 import { Vector2 } from '../../../types.ts';
 
 const ReflectionSkia: React.FC = () => {
@@ -41,7 +41,10 @@ const ReflectionSkia: React.FC = () => {
 
   return (
     <Canvas style={{ flex: 1 }}>
-      <Path path={pathValue} color="lightblue" style="stroke" />
+      <Path path={pathValue} color={Color.CYAN} style="stroke" strokeWidth={2} />
+      <Path path={pathValue} color={Color.CYAN} strokeWidth={2}>
+        <BlurMask blur={6} style="outer" />
+      </Path>
     </Canvas>
   );
 };
