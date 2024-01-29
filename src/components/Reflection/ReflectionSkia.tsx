@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { BlurMask, Canvas, Path, usePathValue } from '@shopify/react-native-skia';
+import { BlurMask, Canvas, Path, usePathValue, Circle } from '@shopify/react-native-skia';
 import { interpolateColor, useDerivedValue, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
-import { useWindowDimensions } from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
 
 import { intersectionPoint, reflect } from '../../helpers/index.tsx';
 import { ANGLE, Colors, DURATION } from '../../constants/index.ts';
@@ -42,12 +42,20 @@ const ReflectionSkia: React.FC = () => {
   const color = useDerivedValue(() => interpolateColor(loop.value, [0, 300], [Colors.PALE_PINK, Colors.SOFT_RED]), [loop]);
 
   return (
-    <Canvas style={{ flex: 1 }}>
+    <Canvas style={styles.container}>
       <Path path={pathValue} color={color} style="stroke" strokeWidth={2} />
       <Path path={pathValue} color={color} strokeWidth={2}>
         <BlurMask blur={6} style="outer" />
       </Path>
+      <Circle cx={xOrigin} cy={yOrigin} r={30} color={Colors.RED} />
     </Canvas>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
 export default ReflectionSkia;
