@@ -24,9 +24,9 @@ float sdSegment( in vec2 p, in vec2 a, in vec2 b ){
 }
 
 vec4 main( vec2 pos ) {
-  vec2 uv = pos / iResolution;
-  uv = uv * 2 - 1;
-  uv.x *= iResolution.x / iResolution.y;
+  vec2 uv = pos / iResolution; // normalized pixel coordinates (from 0 to 1)
+  uv = uv * 2 - 1; // center at 0,0
+  uv.x *= iResolution.x / iResolution.y; // correct aspect ratio
   float time =  iTime * 0.001;
   vec3 finalColor = vec3(0);
 
