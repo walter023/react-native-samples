@@ -26,6 +26,6 @@ Some challenging samples built in react-native
 | Project | |
 | :--- | --- |
 | <h3>1. Bézier curves</h3><br>Some samples the usage of Bézier curves using reanimated & svg.<br><br> | <img alt="Bézier curves" src="./src/assets/demo/bazier.gif" width="100"></a> |
-| <h3>2.Trippy Shader</h3><br>Learning and playing with shaders using reanimated, skia & glsl.<br><br> | <img alt="Bézier curves" src="./src/assets/demo/shader.gif" width="100"></a> |
+| <h3>2.Trippy Shader</h3><br>Playing with shaders using reanimated, skia & glsl.<br><br> | <img alt="Bézier curves" src="./src/assets/demo/shader.gif" width="100"></a> |
 | <h3>3. Vector Reflection</h3><br>Some samples the usage of vectors, dot product, vector projection using reanimated & skia.<br><br> | <img alt="Reflection curves" src="./src/assets/demo/skiaReflection.gif" width="100"></a> |
 | <h3>4. Vector Reflection</h3><br>Some samples the usage of vectors, dot product, vector projection using reanimated & svg.<br><br> | <img alt="Reflection curves" src="./src/assets/demo/reflection.gif" width="100"></a> |
