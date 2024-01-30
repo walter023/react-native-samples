@@ -31,7 +31,7 @@ vec4 main( vec2 pos ) {
   float time =  iTime * 0.0015;
   vec3 finalColor = vec3(0);
 
-  for (float i = 0.0; i < 3.0; i++) {
+  for (float i = 0.0; i < 4.0; i++) {
     uv = fract( uv * 2) - 0.5; 
     float d = sdSegment(uv, vec2(uv.x, 0), vec2(0,uv.y));
 
