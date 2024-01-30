@@ -24,7 +24,12 @@ export const DATA: ListType[] = [
     icon: 'turret',
     screenName: Screens.VECTOR_REFLECTION_SKIA,
   },
-
+  {
+    name: 'Circle Sader',
+    description: 'Another day using sin ,cos, reanimated & skia.',
+    icon: 'axis',
+    screenName: Screens.CIRCLE_SHADER,
+  },
   {
     name: 'Vector Reflection with SVG',
     description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & svg.',
