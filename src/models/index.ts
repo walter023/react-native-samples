@@ -13,17 +13,18 @@ export const DATA: ListType[] = [
     screenName: Screens.BEZIER_CURVE,
   },
   {
-    name: 'Vector Reflection With Skia',
-    description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & skia.',
-    icon: 'turret',
-    screenName: Screens.VECTOR_REFLECTION_SKIA,
-  },
-  {
-    name: 'Shader (Rings)',
+    name: 'Trippy Shader',
     description: 'Learning and playing with shaders using reanimated, skia & glsl.',
     icon: 'axis',
     screenName: Screens.SHADER,
   },
+  {
+    name: 'Vector Reflection with Skia',
+    description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & skia.',
+    icon: 'turret',
+    screenName: Screens.VECTOR_REFLECTION_SKIA,
+  },
+
   {
     name: 'Vector Reflection with SVG',
     description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & svg.',
