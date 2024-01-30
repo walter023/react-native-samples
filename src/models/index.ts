@@ -25,7 +25,7 @@ export const DATA: ListType[] = [
     screenName: Screens.VECTOR_REFLECTION_SKIA,
   },
   {
-    name: 'Circle Sader',
+    name: 'Circle Shader',
     description: 'Another day using sin ,cos, reanimated & skia.',
     icon: 'axis',
     screenName: Screens.CIRCLE_SHADER,
