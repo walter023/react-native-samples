@@ -8,8 +8,7 @@ uniform vec2 iResolution;
 uniform float  iTime;   
 
 // https://iquilezles.org/articles/palettes/
-vec3 palette( in float t )
-{
+vec3 palette( in float t ){
     vec3 a =  vec3 (0.618, 0.658,0.500);
     vec3 b =  vec3 (-0.082, 0.500, -0.452);
     vec3 c =  vec3 (1.000, 1.000, 1.000);
@@ -17,8 +16,8 @@ vec3 palette( in float t )
     return a + b*cos( 6.28318*(c*t+d) );
 } 
 
-float sdSegment( in vec2 p, in vec2 a, in vec2 b )
-{
+//https://www.youtube.com/watch?v=PMltMdi1Wzg
+float sdSegment( in vec2 p, in vec2 a, in vec2 b ){
     vec2 pa = p-a, ba = b-a;
     float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 );
     return length( pa - ba*h );
@@ -28,11 +27,11 @@ vec4 main( vec2 pos ) {
   vec2 uv = pos / iResolution;
   uv = uv * 2 - 1;
   uv.x *= iResolution.x / iResolution.y;
-  float time =  iTime * 0.0015;
+  float time =  iTime * 0.001;
   vec3 finalColor = vec3(0);
 
-  for (float i = 0.0; i < 4.0; i++) {
-    uv = fract( uv * 2) - 0.5; 
+  for (float i = 0.0; i < 3.0; i++) {
+    uv = fract(uv * 3) - 0.5; 
     float d = sdSegment(uv, vec2(uv.x, 0), vec2(0,uv.y));
 
     vec3 col = palette(d + i*.3);
