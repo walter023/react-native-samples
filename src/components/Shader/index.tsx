@@ -28,23 +28,22 @@ vec4 main( vec2 pos ) {
   vec2 uv = pos / iResolution;
   uv = uv * 2 - 1;
   uv.x *= iResolution.x / iResolution.y;
-  float time =  iTime * 0.002;
-  vec2 uv0 = vec2(uv); // ref to the center.
+  float time =  iTime * 0.0015;
+  vec3 finalColor = vec3(0);
 
-    uv *= 2;  
-    uv = fract( uv ); 
-    uv -= 0.5;
-    
+  for (float i = 0.0; i < 3.0; i++) {
+    uv = fract( uv * 2) - 0.5; 
     float d = sdSegment(uv, vec2(uv.x, 0), vec2(0,uv.y));
 
-    vec3 col = palette(d + time);
+    vec3 col = palette(d + i*.3);
     d = sin(d * 10 + time ) / 10;
     d = abs(d);
 
     d = 0.009 / d; 
-    col *= d;
+    finalColor += col *= d;
+  }
 
-  return vec4(col, 1);
+  return vec4(finalColor, 1);
 
 }`)!;
 
