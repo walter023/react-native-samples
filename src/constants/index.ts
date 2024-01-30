@@ -5,6 +5,7 @@ export const Screens = {
   VECTOR_REFLECTION_SKIA: 'VECTOR_REFLECTION_SKIA',
   ROPE_EFFECT: 'ROPE_EFFECT',
   SHADER: 'SHADER',
+  CIRCLE_SHADER: 'CIRCLE_SHADER',
 };
 
 export const Colors = {

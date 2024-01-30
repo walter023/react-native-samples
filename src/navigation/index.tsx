@@ -5,6 +5,7 @@ import BezierCurveScreen from '../screens/BezierCurve.tsx';
 import VectorReflectionScreen from '../screens/VectorReflection.tsx';
 import RopeEffectScreen from '../screens/RopeEffect.tsx';
 import ShaderScreen from '../screens/Shader.tsx';
+import CircleShaderScreen from '../screens/CircleShader.tsx';
 import ReflectionSkiaScreen from '../screens/ReflectionSkia.tsx';
 
 const templateScreen: { [key: string]: React.JSX.Element } = {
@@ -14,6 +15,7 @@ const templateScreen: { [key: string]: React.JSX.Element } = {
   [Screens.ROPE_EFFECT]: <RopeEffectScreen />,
   [Screens.VECTOR_REFLECTION_SKIA]: <ReflectionSkiaScreen />,
   [Screens.SHADER]: <ShaderScreen />,
+  [Screens.CIRCLE_SHADER]: <CircleShaderScreen />,
 };
 
 export const NavigationContext = React.createContext({
