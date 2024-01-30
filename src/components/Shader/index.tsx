@@ -5,23 +5,33 @@ import { useDerivedValue } from 'react-native-reanimated';
 
 const source = Skia.RuntimeEffect.Make(`
 uniform vec2 iResolution;
-uniform float  iTime;    
+uniform float  iTime;   
 
-vec4 main(vec2 pos) {
+// https://iquilezles.org/articles/palettes/
+vec3 palette( in float t )
+{
+    vec3 a =  vec3 (0.618, 0.658,0.500);
+    vec3 b =  vec3 (-0.082, 0.500, -0.452);
+    vec3 c =  vec3 (1.000, 1.000, 1.000);
+    vec3 d =  vec3 (0.000, 0.333, 0.667);
+    return a + b*cos( 6.28318*(c*t+d) );
+} 
+
+vec4 main( vec2 pos ) {
   vec2 uv = pos / iResolution;
   uv = uv * 2 - 1;
   uv.x *= iResolution.x / iResolution.y;
   
   float d = length(uv);
-  d = sin(d * 12 + iTime * 0.002) / 12;
+  vec3 col = palette(d);
+  d = sin(d * 10 + iTime * 0.002) / 10;
   d = abs(d);
 
-  d = 0.002 / d; 
+  d = 0.015 / d; 
 
-  vec3 redColor = vec3(1, 0, 0);
 
-  redColor *= d;
-  return vec4(redColor, 1);
+  col *= d;
+  return vec4(col, 1);
 }`)!;
 
 const Rings = () => {

@@ -31,6 +31,7 @@ module.exports = {
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'warn',
     'no-unused-vars': 'off',
+    'no-use-before-define': ['error', { variables: false }],
     '@typescript-eslint/no-unused-vars': 'error',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/jsx-indent': [2, 2],
