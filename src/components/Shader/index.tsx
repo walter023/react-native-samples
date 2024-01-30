@@ -16,13 +16,6 @@ vec3 palette( in float t ){
     return a + b*cos( 6.28318*(c*t+d) );
 } 
 
-//https://www.youtube.com/watch?v=PMltMdi1Wzg
-float sdSegment( in vec2 p, in vec2 a, in vec2 b ){
-    vec2 pa = p-a, ba = b-a;
-    float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 );
-    return length( pa - ba*h );
-}
-
 vec4 main( vec2 pos ) {
   vec2 uv = pos / iResolution; // normalized pixel coordinates (from 0 to 1)
   uv = uv * 2 - 1; // center at 0,0
@@ -31,8 +24,8 @@ vec4 main( vec2 pos ) {
   vec3 finalColor = vec3(0);
 
   for (float i = 0.0; i < 3.0; i++) {
-    uv = fract(uv * 3) - 0.5; 
-    float d = sdSegment(uv, vec2(uv.x, 0), vec2(0,uv.y));
+    uv = fract(uv*3) - 0.5; 
+    float d = length(uv); 
 
     vec3 col = palette(d + i*.3);
     d = sin(d * 10 + time ) / 10;
