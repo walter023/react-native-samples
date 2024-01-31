@@ -25,9 +25,9 @@ vec4 main( vec2 pos ) {
 
   vec3 color1 = vec3(0.1, 0.0, 0.0);
 	vec3 color2 = vec3(0.1, 0.0, 0.0);
-  
-  float c = cos(time);
-  float s = sin(time);
+
+  float c = cos(time) * .25;
+  float s = sin(time) * .25;
  
   float d = abs(uv.x + c);
   float e = abs(uv.y + s);
