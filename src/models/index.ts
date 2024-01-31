@@ -15,19 +15,19 @@ export const DATA: ListType[] = [
   {
     name: 'Trippy Shader',
     description: 'Learning and playing with shaders using reanimated, skia & glsl.',
-    icon: 'axis',
+    icon: 'circles',
     screenName: Screens.SHADER,
   },
   {
     name: 'Vector Reflection with Skia',
     description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & skia.',
-    icon: 'turret',
+    icon: 'axis',
     screenName: Screens.VECTOR_REFLECTION_SKIA,
   },
   {
-    name: 'Circle Shader',
+    name: 'Grid Shader',
     description: 'Another day using sin ,cos, reanimated & skia.',
-    icon: 'axis',
+    icon: 'coord',
     screenName: Screens.CIRCLE_SHADER,
   },
   {
