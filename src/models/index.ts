@@ -14,7 +14,7 @@ export const DATA: ListType[] = [
   },
   {
     name: 'Trippy Shader',
-    description: 'Learning and playing with shaders using reanimated, skia & glsl.',
+    description: 'Playing with shaders using reanimated, skia & glsl.',
     icon: 'circles',
     screenName: Screens.SHADER,
   },
@@ -26,7 +26,7 @@ export const DATA: ListType[] = [
   },
   {
     name: 'Grid Shader',
-    description: 'Another day using sin ,cos, reanimated & skia.',
+    description: 'Another day using sin ,cos, some funky colors also reanimated & skia.',
     icon: 'coord',
     screenName: Screens.CIRCLE_SHADER,
   },
