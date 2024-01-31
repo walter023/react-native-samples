@@ -9,10 +9,10 @@ uniform float  iTime;
 
 // https://iquilezles.org/articles/palettes/
 vec3 palette( in float t ){
-    vec3 a =  vec3 (0.618, 0.658,0.500);
-    vec3 b =  vec3 (-0.082, 0.500, -0.452);
-    vec3 c =  vec3 (1.000, 1.000, 1.000);
-    vec3 d =  vec3 (0.000, 0.333, 0.667);
+    vec3 a =  vec3 (0.768, 0.518, 0.528);
+    vec3 b =  vec3 (0.414, 0.200, 0.310);
+    vec3 c =  vec3 (0.901, 0.546, 0.862);
+    vec3 d =  vec3 (0.007, 0.333, 0.667);
     return a + b*cos( 6.28318*(c*t+d) );
 } 
 
@@ -24,8 +24,8 @@ vec4 main( vec2 pos ) {
   vec3 finalColor = vec3(0);
 
   for (float i = 0.0; i < 25.0; i++) {
-    float c = cos(time + i) * .3;
-    float s = sin(time + i) * .3;
+    float c = cos(time + i) * 0.3;
+    float s = sin(time + i) * 0.3;
     float d = abs(uv.x + c);
     float e = abs(uv.y + s);
     float h = 0.00007/(d * e);
