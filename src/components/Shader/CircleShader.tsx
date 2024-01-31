@@ -25,15 +25,20 @@ vec4 main( vec2 pos ) {
 
   vec3 color1 = vec3(0.1, 0.0, 0.0);
 	vec3 color2 = vec3(0.1, 0.0, 0.0);
+  float f = 0.0;
+	float g = 0.0;
+	float h = 0.0;
 
-  float c = cos(time) * .25;
-  float s = sin(time) * .25;
- 
-  float d = abs(uv.x + c);
-  float e = abs(uv.y + s);
-  float h = 0.0002/(d * e);
-
-  return vec4(d * color1 + e * color2 + vec3(h), 1.0);
+  for (float i = 0.0; i < 3.0; i++) {
+    float c = cos(time + i) * .25;
+    float s = sin(time + i) * .25;
+    float d = abs(uv.x + c);
+    float e = abs(uv.y + s);
+    f += d;
+		g += e;
+    h += 0.0002/(d * e);
+  }
+  return vec4(f * color1 + g * color2 + vec3(h), 1.0);
 }`)!;
 
 const CircleShader = () => {
