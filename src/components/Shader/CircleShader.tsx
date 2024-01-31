@@ -23,8 +23,14 @@ vec4 main( vec2 pos ) {
   float time =  iTime * 0.001;
   vec3 finalColor = vec3(0);
 
- 
-  return vec4(finalColor, 1);
+  vec3 color1 = vec3(0.1, 0.0, 0.0);
+	vec3 color2 = vec3(0.1, 0.0, 0.0);
+
+  float d = abs(uv.x);
+  float e = abs(uv.y);
+  float h = 0.0002/(d * e);
+
+  return vec4(d * color1 + e * color2 + vec3(h), 1.0);
 }`)!;
 
 const CircleShader = () => {
