@@ -35,7 +35,7 @@ vec4 main( vec2 pos ) {
   return vec4( finalColor, 1.0);
 }`)!;
 
-const CircleShader = () => {
+const CircleShader: React.FC = () => {
   const { height, width } = useWindowDimensions();
   const iResolution = vec(width, height);
   const clock = useClock();
