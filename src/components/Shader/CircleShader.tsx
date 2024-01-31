@@ -24,11 +24,11 @@ vec4 main( vec2 pos ) {
   vec3 finalColor = vec3(0);
 
   for (float i = 0.0; i < 25.0; i++) {
-    float c = cos(time + i) * .25;
-    float s = sin(time + i) * .25;
+    float c = cos(time + i) * .3;
+    float s = sin(time + i) * .3;
     float d = abs(uv.x + c);
     float e = abs(uv.y + s);
-    float  h = 0.00007/(d * e);
+    float h = 0.00007/(d * e);
     vec3 col = palette(uv.x + uv.y + time + i * .25);
     finalColor += col *= h;
   }
