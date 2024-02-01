@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import React, { useContext, useEffect } from 'react';
 import { ListRenderItemInfo, Pressable, StyleSheet, Text, useColorScheme, useWindowDimensions, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';

@@ -11,7 +11,6 @@ const BackButton: React.FC = () => {
   const { back } = useContext(NavigationContext);
 
   return (
-    // eslint-disable-next-line no-use-before-define
     <TouchableOpacity style={themeStyles(isDarkMode).container} onPress={back}>
       <Icon name="backButton" size={IconSize.MD} fill={theme.home(!isDarkMode).headerBg} />
     </TouchableOpacity>

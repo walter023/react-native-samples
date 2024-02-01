@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import React, { Fragment, useEffect } from 'react';
 import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import Svg, { Path } from 'react-native-svg';

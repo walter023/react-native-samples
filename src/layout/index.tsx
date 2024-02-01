@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, Text, useColorScheme, useWindowDimensions, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';

@@ -1,8 +1,7 @@
-/* eslint-disable import/prefer-default-export */
 import React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
-export const BackButton: React.FC<SvgProps> = (props: SvgProps) => (
+const BackButton: React.FC<SvgProps> = (props: SvgProps) => (
   <Svg viewBox="0 0 64 64" {...props}>
     <Path
       fill={props.fill}
@@ -10,3 +9,5 @@ export const BackButton: React.FC<SvgProps> = (props: SvgProps) => (
     />
   </Svg>
 );
+
+export default BackButton;
