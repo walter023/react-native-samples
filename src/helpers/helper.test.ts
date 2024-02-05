@@ -13,7 +13,7 @@ describe('lerp', () => {
   test('The linear interpolation of 0 and 1 at 0.75 is 0.75', () => {
     const POS = 0.75;
     const RESULT = 0.75;
-    expect(lerp(0, 1, POS)).toBe(RESULT);
+    expect(lerp(FROM, TO, POS)).toBe(RESULT);
   });
 });
 
