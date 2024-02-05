@@ -14,7 +14,7 @@ import Animated, {
 import { Points as PointsPros } from '../../../types.ts';
 import { ControlPointsInitState } from '../../models/index.ts';
 import { Colors, R, BEZIER_DURATION } from '../../constants/index.ts';
-import { lerp } from '../../helpers/index.tsx';
+import { lerp } from '../../helpers/index.ts';
 import ControlPoint from './ControlPoint.tsx';
 
 const Beziercurve: React.FC = () => {

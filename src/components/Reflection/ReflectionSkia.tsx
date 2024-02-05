@@ -3,7 +3,7 @@ import { BlurMask, Canvas, Path, usePathValue, Circle } from '@shopify/react-nat
 import { interpolateColor, useDerivedValue, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import { StyleSheet, useWindowDimensions } from 'react-native';
 
-import { intersectionPoint, reflect } from '../../helpers/index.tsx';
+import { intersectionPoint, reflect } from '../../helpers/index.ts';
 import { ANGLE, Colors, DURATION } from '../../constants/index.ts';
 import { Vector2 } from '../../../types.ts';
 

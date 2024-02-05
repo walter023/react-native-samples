@@ -3,7 +3,7 @@ import Svg, { Path, PathProps, Circle } from 'react-native-svg';
 import { useColorScheme, useWindowDimensions } from 'react-native';
 import Animated, { useSharedValue, withRepeat, withTiming, useAnimatedProps, useDerivedValue } from 'react-native-reanimated';
 
-import { intersectionPoint, reflect } from '../../helpers/index.tsx';
+import { intersectionPoint, reflect } from '../../helpers/index.ts';
 import { Vector2 } from '../../../types.ts';
 import { Colors, ANGLE, DURATION, BOUNCES } from '../../constants/index.ts';
 import * as theme from '../../theme.ts';
