@@ -1,4 +1,4 @@
-import { lerp, intersectionPoint } from './index.ts';
+import { lerp, intersectionPoint, reflect } from './index.ts';
 
 describe('lerp', () => {
   const FROM = 0;
@@ -31,5 +31,21 @@ describe('intersectionPoint', () => {
     const INCOMING_VECTOR = { x: -100, y: -100 };
     const RESULT = { x: 0, y: 0 };
     expect(intersectionPoint(INCOMING_VECTOR, ORIGIN, RESOLUTION)).toEqual(RESULT);
+  });
+});
+
+describe('reflect', () => {
+  test('The reflection of a vector with normal vector (1, 0) is (-1, 0)', () => {
+    const INCOMING_VECTOR = { x: 1, y: 0 };
+    const NORMAL_VECTOR = { x: 1, y: 0 };
+    const RESULT = { x: -1, y: 0 };
+    expect(reflect(INCOMING_VECTOR, NORMAL_VECTOR)).toEqual(RESULT);
+  });
+
+  test('The reflection of a vector with normal vector (0, 1) is (0, -1)', () => {
+    const INCOMING_VECTOR = { x: 0, y: 1 };
+    const NORMAL_VECTOR = { x: 0, y: 1 };
+    const RESULT = { x: 0, y: -1 };
+    expect(reflect(INCOMING_VECTOR, NORMAL_VECTOR)).toEqual(RESULT);
   });
 });
