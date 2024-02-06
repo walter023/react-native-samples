@@ -8,27 +8,31 @@ import ShaderScreen from '../screens/Shader.tsx';
 import CircleShaderScreen from '../screens/CircleShader.tsx';
 import ReflectionSkiaScreen from '../screens/ReflectionSkia.tsx';
 
-const templateScreen: { [key: string]: React.JSX.Element } = {
-  [Screens.HOME]: <HomeScreen />,
-  [Screens.BEZIER_CURVE]: <BezierCurveScreen />,
-  [Screens.VECTOR_REFLECTION]: <VectorReflectionScreen />,
-  [Screens.ROPE_EFFECT]: <RopeEffectScreen />,
-  [Screens.VECTOR_REFLECTION_SKIA]: <ReflectionSkiaScreen />,
-  [Screens.SHADER]: <ShaderScreen />,
-  [Screens.CIRCLE_SHADER]: <CircleShaderScreen />,
+type TemplateScreen = {
+  [key in keyof typeof Screens]: React.JSX.Element;
+};
+
+const templateScreen: TemplateScreen = {
+  HOME: <HomeScreen />,
+  BEZIER_CURVE: <BezierCurveScreen />,
+  VECTOR_REFLECTION: <VectorReflectionScreen />,
+  ROPE_EFFECT: <RopeEffectScreen />,
+  VECTOR_REFLECTION_SKIA: <ReflectionSkiaScreen />,
+  SHADER: <ShaderScreen />,
+  CIRCLE_SHADER: <CircleShaderScreen />,
 };
 
 export const NavigationContext = React.createContext({
   currentScreen: Screens.HOME,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  navigate: (screen: string) => {},
+  navigate: (screen: keyof typeof Screens) => {},
   back: () => {},
 });
 
 export const ContextNavigation = () => {
-  const [currentScreen, setCurrentScreen] = useState<string>(Screens.HOME);
+  const [currentScreen, setCurrentScreen] = useState<keyof typeof Screens>('HOME');
 
-  const navigate = (screen: string) => {
+  const navigate = (screen: keyof typeof Screens) => {
     setCurrentScreen(screen);
   };
 
@@ -37,7 +41,7 @@ export const ContextNavigation = () => {
       value={{
         currentScreen,
         navigate,
-        back: () => setCurrentScreen(Screens.HOME),
+        back: () => setCurrentScreen('HOME'),
       }}
     >
       {templateScreen[currentScreen]}
