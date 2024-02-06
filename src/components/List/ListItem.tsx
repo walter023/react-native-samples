@@ -8,7 +8,7 @@ import * as theme from '../../theme.ts';
 import { NavigationContext } from '../../navigation/index.tsx';
 import Icon from '../Icon/index.ts';
 import { IconSize } from '../../../types.ts';
-import { Colors } from '../../constants/index.ts';
+import { Colors, Screens } from '../../constants/index.ts';
 
 interface ListItemProps {
   data: ListRenderItemInfo<(typeof DATA)[0]>;
@@ -35,7 +35,7 @@ const ListItem: React.FC<ListItemProps> = ({ data }) => {
   }));
 
   const onPressed = () => {
-    navigate(item.screenName);
+    navigate(item.screenName as keyof typeof Screens);
   };
 
   return (
