@@ -6,6 +6,7 @@ export const Screens = {
   ROPE_EFFECT: 'ROPE_EFFECT',
   SHADER: 'SHADER',
   CIRCLE_SHADER: 'CIRCLE_SHADER',
+  LOVE_HOLE: 'LOVE_HOLE',
 };
 
 export const Colors = {

@@ -42,6 +42,12 @@ export const DATA: ListType[] = [
     icon: 'length',
     screenName: Screens.ROPE_EFFECT,
   },
+  {
+    name: 'Love Hole',
+    description: 'Another Shader.',
+    icon: 'heart',
+    screenName: Screens.LOVE_HOLE,
+  },
 ];
 
 export const ControlPointsInitState: Points = {
