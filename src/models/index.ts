@@ -13,16 +13,22 @@ export const DATA: ListType[] = [
     screenName: Screens.BEZIER_CURVE,
   },
   {
-    name: 'Trippy Shader',
-    description: 'Playing with shaders using reanimated, skia & glsl.',
-    icon: 'circles',
-    screenName: Screens.SHADER,
-  },
-  {
     name: 'Vector Reflection with Skia',
     description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & skia.',
     icon: 'axis',
     screenName: Screens.VECTOR_REFLECTION_SKIA,
+  },
+  {
+    name: 'Mandelbrot Zoom Out',
+    description: 'Imaginary Numbers.',
+    icon: 'turret',
+    screenName: Screens.MANDELBROT_ZOOM,
+  },
+  {
+    name: 'Trippy Shader',
+    description: 'Playing with shaders using reanimated, skia & glsl.',
+    icon: 'circles',
+    screenName: Screens.SHADER,
   },
   {
     name: 'Grid Shader',
@@ -30,12 +36,7 @@ export const DATA: ListType[] = [
     icon: 'coord',
     screenName: Screens.CIRCLE_SHADER,
   },
-  {
-    name: 'Vector Reflection with SVG',
-    description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & svg.',
-    icon: 'turret',
-    screenName: Screens.VECTOR_REFLECTION,
-  },
+
   {
     name: 'Rope Effect',
     description: 'Some samples the usage of rope physics curves using reanimated & svg.',
