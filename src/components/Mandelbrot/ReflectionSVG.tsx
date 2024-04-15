@@ -6,14 +6,10 @@ import { useDerivedValue } from 'react-native-reanimated';
 const source = Skia.RuntimeEffect.Make(`
 uniform vec2 iResolution;
 uniform float  iTime;   
-
-
-
 const float threshold = 4.0;
 const float maxIndex = 150.0;
 float red = 0.03;
 
-  
 vec3 palette(in float t) {
   vec3 a = vec3(0.618, 0.658, 0.500);
   vec3 b = vec3(-0.082, 0.500, -0.452);
@@ -21,7 +17,6 @@ vec3 palette(in float t) {
   vec3 d = vec3(0.000, 0.333, 0.667);
   return a + b * cos(6.28318 * (c * t + d));
 }
-
 
 vec2 setCamera(vec2 uv) {
   float rad = sin(iTime * .0002) * 2.1;
@@ -58,15 +53,11 @@ vec4 main( vec2 fragCoord ) {
       break;
     }
     z = Mandelbrot(uv, z);
-
   }
-
-
-
   return vec4(finalColor, 1);
 }`)!;
 
-const LoveHole = () => {
+const MandelbrotZoom = () => {
   const { height, width } = useWindowDimensions();
   const iResolution = vec(width, height);
   const clock = useClock();
@@ -88,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoveHole;
+export default MandelbrotZoom;

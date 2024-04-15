@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Screens } from '../constants/index.ts';
 import HomeScreen from '../screens/Home.tsx';
 import BezierCurveScreen from '../screens/BezierCurve.tsx';
-import VectorReflectionScreen from '../screens/VectorReflection.tsx';
+import MandelbrotZoomScreen from '../screens/VectorReflection.tsx';
 import RopeEffectScreen from '../screens/RopeEffect.tsx';
 import ShaderScreen from '../screens/Shader.tsx';
 import CircleShaderScreen from '../screens/CircleShader.tsx';
@@ -17,7 +17,7 @@ type TemplateScreen = {
 const templateScreen: TemplateScreen = {
   HOME: <HomeScreen />,
   BEZIER_CURVE: <BezierCurveScreen />,
-  VECTOR_REFLECTION: <VectorReflectionScreen />,
+  MANDELBROT_ZOOM: <MandelbrotZoomScreen />,
   ROPE_EFFECT: <RopeEffectScreen />,
   VECTOR_REFLECTION_SKIA: <ReflectionSkiaScreen />,
   SHADER: <ShaderScreen />,
