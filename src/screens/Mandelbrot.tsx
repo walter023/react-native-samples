@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from '../layout/index.tsx';
 import BackButton from '../components/BackButton/index.tsx';
-import LoveHole from '../components/Shader/Texture.tsx';
+import Mandelbrot from '../components/Shader/MandelbrotZoom.tsx';
 
-const LoveHoleScreen: React.FC = () => (
+const MandelbrotScreen: React.FC = () => (
   <Layout>
-    <LoveHole />
+    <Mandelbrot />
     <BackButton />
   </Layout>
 );
 
-export default LoveHoleScreen;
+export default MandelbrotScreen;

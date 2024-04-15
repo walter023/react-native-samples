@@ -7,6 +7,7 @@ export const Screens = {
   SHADER: 'SHADER',
   CIRCLE_SHADER: 'CIRCLE_SHADER',
   LOVE_HOLE: 'LOVE_HOLE',
+  MANDELBROT: 'MANDELBROT',
 };
 
 export const Colors = {

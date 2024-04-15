@@ -45,8 +45,14 @@ export const DATA: ListType[] = [
   {
     name: 'Love Hole',
     description: 'Another Shader.',
-    icon: 'heart',
+    icon: 'coord',
     screenName: Screens.LOVE_HOLE,
+  },
+  {
+    name: 'Mandelbrot',
+    description: 'Mandelbrot Shader.',
+    icon: 'coord',
+    screenName: Screens.MANDELBROT,
   },
 ];
 

@@ -8,6 +8,7 @@ import ShaderScreen from '../screens/Shader.tsx';
 import CircleShaderScreen from '../screens/CircleShader.tsx';
 import ReflectionSkiaScreen from '../screens/ReflectionSkia.tsx';
 import LoveHoleScreen from '../screens/Love.tsx';
+import MandelbrotScreen from '../screens/Mandelbrot.tsx';
 
 type TemplateScreen = {
   [key in keyof typeof Screens]: React.JSX.Element;
@@ -22,6 +23,7 @@ const templateScreen: TemplateScreen = {
   SHADER: <ShaderScreen />,
   CIRCLE_SHADER: <CircleShaderScreen />,
   LOVE_HOLE: <LoveHoleScreen />,
+  MANDELBROT: <MandelbrotScreen />,
 };
 
 export const NavigationContext = React.createContext({
