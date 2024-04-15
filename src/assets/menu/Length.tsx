@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, { SvgProps, Path, G } from 'react-native-svg';
 
-const Length = (props: SvgProps) => (
+const Length: React.FC<SvgProps> = (props: SvgProps) => (
   <Svg viewBox="0 0 512 512" {...props}>
     <G>
       <G>

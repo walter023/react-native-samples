@@ -1,7 +1,7 @@
-/* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import Svg, { SvgProps, Path, G } from 'react-native-svg';
 
-const BezierCurve = (props: SvgProps) => (
+const BezierCurve: React.FC<SvgProps> = (props: SvgProps) => (
   <Svg viewBox="0 0 512 512" {...props}>
     <G>
       <G>

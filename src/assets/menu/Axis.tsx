@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, { SvgProps, Path, G } from 'react-native-svg';
 
-const Axis = (props: SvgProps) => (
+const Axis: React.FC<SvgProps> = (props: SvgProps) => (
   <Svg viewBox="0 0 512 512" {...props}>
     <G>
       <G>

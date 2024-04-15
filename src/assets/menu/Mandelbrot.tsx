@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, { SvgProps, Path, G } from 'react-native-svg';
 
-const Mandelbrot = (props: SvgProps) => (
+const Mandelbrot: React.FC<SvgProps> = (props: SvgProps) => (
   <Svg viewBox="0 0 593.607 593.607" {...props}>
     <G>
       <G>
