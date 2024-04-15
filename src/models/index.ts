@@ -21,7 +21,7 @@ export const DATA: ListType[] = [
   {
     name: 'Mandelbrot Zoom Out',
     description: 'Imaginary Numbers.',
-    icon: 'turret',
+    icon: 'madelbrot',
     screenName: Screens.MANDELBROT_ZOOM,
   },
   {
