@@ -25,18 +25,23 @@ export const DATA: ListType[] = [
     screenName: Screens.MANDELBROT_ZOOM,
   },
   {
+    name: 'Unit Circle',
+    description: 'Funky unit circle colors also reanimated & skia.',
+    icon: 'coord',
+    screenName: Screens.CIRCLE_SHADER,
+  },
+  {
+    name: 'Mandelbrot Conner',
+    description: 'Mandelbrot with some neons.',
+    icon: 'madelbrotZoom',
+    screenName: Screens.MANDELBROT,
+  },
+  {
     name: 'Trippy Shader',
     description: 'Playing with shaders using reanimated, skia & glsl.',
     icon: 'circles',
     screenName: Screens.SHADER,
   },
-  {
-    name: 'Grid Shader',
-    description: 'Another day using sin ,cos, some funky colors also reanimated & skia.',
-    icon: 'coord',
-    screenName: Screens.CIRCLE_SHADER,
-  },
-
   {
     name: 'Rope Effect',
     description: 'Some samples the usage of rope physics curves using reanimated & svg.',
@@ -48,12 +53,6 @@ export const DATA: ListType[] = [
     description: 'Another Shader.',
     icon: 'coord',
     screenName: Screens.LOVE_HOLE,
-  },
-  {
-    name: 'Mandelbrot',
-    description: 'Mandelbrot Shader.',
-    icon: 'coord',
-    screenName: Screens.MANDELBROT,
   },
 ];
 
