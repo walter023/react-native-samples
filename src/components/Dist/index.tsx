@@ -1,5 +1,5 @@
+import { Canvas, Fill, Shader, Skia, useClock, vec } from '@shopify/react-native-skia';
 import React from 'react';
-import { Skia, Canvas, Shader, Fill, vec, useClock } from '@shopify/react-native-skia';
 import { StyleSheet, useWindowDimensions } from 'react-native';
 import { useDerivedValue } from 'react-native-reanimated';
 
@@ -9,10 +9,10 @@ uniform float  iTime;
 
 // https://iquilezles.org/articles/palettes/
 vec3 palette( in float t ){
-    vec3 a =  vec3 (0.618, 0.658,0.500);
-    vec3 b =  vec3 (-0.082, 0.500, -0.452);
-    vec3 c =  vec3 (1.000, 1.000, 1.000);
-    vec3 d =  vec3 (0.000, 0.333, 0.667);
+    vec3 a =  vec3 (0.768, 0.518, 0.528);
+    vec3 b =  vec3 (0.414, 0.200, 0.310);
+    vec3 c =  vec3 (0.901, 0.546, 0.862);
+    vec3 d =  vec3 (0.007, 0.333, 0.667);
     return a + b*cos( 6.28318*(c*t+d) );
 } 
 
@@ -22,19 +22,20 @@ vec4 main( vec2 pos ) {
   uv.x *= iResolution.x / iResolution.y; 
   float time =  iTime * 0.001;
   vec3 finalColor = vec3(0);
-  for (float i = 0.0; i < 3.0; i++) {
-    uv = fract(uv*3) - 0.5; 
-    float d = length(uv); 
-    vec3 col = palette(d + i*.7);
-    d = sin(d * 10 + time ) / 10;
-    d = abs(d);
-    d = 0.008 / d; 
-    finalColor += col *= d;
+
+  for (float i = 0.0; i < 25.0; i++) {
+    float c = cos(time + i) * 0.3;
+    float s = sin(time + i) * 0.3;
+    float d = abs(uv.x + c);
+    float e = abs(uv.y + s);
+    float h = 0.00007/(d * e);
+    vec3 col = palette(uv.x + uv.y + time + i * .25);
+    finalColor += col *= h;
   }
-  return vec4(finalColor, 1);
+  return vec4( finalColor, 1.0);
 }`)!;
 
-const Rings = () => {
+const CircleShader: React.FC = () => {
   const { height, width } = useWindowDimensions();
   const iResolution = vec(width, height);
   const clock = useClock();
@@ -56,4 +57,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Rings;
+export default CircleShader;
