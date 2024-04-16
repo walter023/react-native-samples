@@ -12,21 +12,22 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { Points as PointsPros } from '../../../types.ts';
-import { ControlPointsInitState } from '../../models/index.ts';
+
 import { Colors, R, BEZIER_DURATION } from '../../constants/index.ts';
-import { lerp } from '../../helpers/index.ts';
+import { lerp, ControlPointsInitState } from '../../helpers/index.ts';
 import ControlPoint from './ControlPoint.tsx';
 
 const Beziercurve: React.FC = () => {
   const AnimatedPath = Animated.createAnimatedComponent(Path);
   const { width, height } = useWindowDimensions();
-  const ctrlPoints = useSharedValue<PointsPros>(ControlPointsInitState);
+  const state = ControlPointsInitState();
+  const ctrlPoints = useSharedValue<PointsPros>(state);
 
-  const sideAX = useSharedValue<number>(ControlPointsInitState.p1.x);
-  const sideAY = useSharedValue<number>(ControlPointsInitState.p1.y);
+  const sideAX = useSharedValue<number>(state.p1.x);
+  const sideAY = useSharedValue<number>(state.p1.y);
 
-  const sideBX = useSharedValue<number>(ControlPointsInitState.p2.x);
-  const sideBY = useSharedValue<number>(ControlPointsInitState.p2.y);
+  const sideBX = useSharedValue<number>(state.p2.x);
+  const sideBY = useSharedValue<number>(state.p2.y);
 
   const bezierT = useSharedValue<number>(0);
   const bezeirX = useSharedValue<number>(sideBX.value);

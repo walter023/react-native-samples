@@ -1,9 +1,5 @@
-import { useWindowDimensions } from 'react-native';
 import { Screens } from '../constants/index.ts';
-import { ListType, Points } from '../../types.ts';
-
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const { width, height } = useWindowDimensions();
+import { ListType } from '../../types.ts';
 
 export const DATA: ListType[] = [
   {
@@ -56,17 +52,4 @@ export const DATA: ListType[] = [
   },
 ];
 
-export const ControlPointsInitState: Points = {
-  p0: {
-    x: 20,
-    y: height / 2,
-  },
-  p1: {
-    x: width / 2,
-    y: 20,
-  },
-  p2: {
-    x: width - 20,
-    y: height / 2,
-  },
-};
+export default DATA;

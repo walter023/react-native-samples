@@ -1,9 +1,27 @@
-import { Platform } from 'react-native';
-import { Vector2 } from '../../types.ts';
+import { Platform, useWindowDimensions } from 'react-native';
+import { Points, Vector2 } from '../../types.ts';
 
 export const isIos = Platform.OS === 'ios';
-
 export const isAndroid = Platform.OS !== 'ios';
+
+export const ControlPointsInitState = (): Points => {
+  const { width, height } = useWindowDimensions();
+  const points = {
+    p0: {
+      x: 20,
+      y: height / 2,
+    },
+    p1: {
+      x: width / 2,
+      y: 20,
+    },
+    p2: {
+      x: width - 20,
+      y: height / 2,
+    },
+  };
+  return points;
+};
 
 /**
  * p0 + (p1 - p0) * t === p0 + (p1*t + p0*t) === (1-t)*p0 + t*p1
