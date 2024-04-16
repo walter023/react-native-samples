@@ -3,6 +3,12 @@ import { ListType } from '../../types.ts';
 
 export const DATA: ListType[] = [
   {
+    name: 'Mandelbrot Zoom',
+    description: 'Imaginary Numbers.',
+    icon: 'madelbrot',
+    screenName: Screens.MANDELBROT_ZOOM,
+  },
+  {
     name: 'Bézier curves',
     description: 'Some samples the usage of Bézier curves using reanimated & svg.',
     icon: 'bezierCurve',
@@ -13,12 +19,6 @@ export const DATA: ListType[] = [
     description: 'Usage of vectors and vector projection using reanimated & skia.',
     icon: 'axis',
     screenName: Screens.VECTOR_REFLECTION_SKIA,
-  },
-  {
-    name: 'Mandelbrot Zoom Out',
-    description: 'Imaginary Numbers.',
-    icon: 'madelbrot',
-    screenName: Screens.MANDELBROT_ZOOM,
   },
   {
     name: 'Unit Circle',
@@ -38,18 +38,12 @@ export const DATA: ListType[] = [
     icon: 'circles',
     screenName: Screens.SHADER,
   },
-  {
-    name: 'Rope Effect',
-    description: 'Some samples the usage of rope physics curves using reanimated & svg.',
-    icon: 'length',
-    screenName: Screens.ROPE_EFFECT,
-  },
-  {
+  /*  {
     name: 'Love Hole',
     description: 'Another Shader.',
     icon: 'coord',
     screenName: Screens.LOVE_HOLE,
-  },
+  }, */
 ];
 
 export default DATA;

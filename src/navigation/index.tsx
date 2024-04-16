@@ -3,7 +3,6 @@ import { Screens } from '../constants/index.ts';
 import HomeScreen from '../screens/Home.tsx';
 import BezierCurveScreen from '../screens/BezierCurve.tsx';
 import MandelbrotZoomScreen from '../screens/VectorReflection.tsx';
-import RopeEffectScreen from '../screens/RopeEffect.tsx';
 import ShaderScreen from '../screens/Shader.tsx';
 import CircleShaderScreen from '../screens/CircleShader.tsx';
 import ReflectionSkiaScreen from '../screens/ReflectionSkia.tsx';
@@ -18,7 +17,6 @@ const templateScreen: TemplateScreen = {
   HOME: <HomeScreen />,
   BEZIER_CURVE: <BezierCurveScreen />,
   MANDELBROT_ZOOM: <MandelbrotZoomScreen />,
-  ROPE_EFFECT: <RopeEffectScreen />,
   VECTOR_REFLECTION_SKIA: <ReflectionSkiaScreen />,
   SHADER: <ShaderScreen />,
   CIRCLE_SHADER: <CircleShaderScreen />,
