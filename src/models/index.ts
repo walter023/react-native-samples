@@ -13,8 +13,8 @@ export const DATA: ListType[] = [
     screenName: Screens.BEZIER_CURVE,
   },
   {
-    name: 'Vector Reflection with Skia',
-    description: 'Some samples the usage of vectors, dot product, vector projection using reanimated & skia.',
+    name: 'Vector Reflection using Skia',
+    description: 'Usage of vectors and vector projection using reanimated & skia.',
     icon: 'axis',
     screenName: Screens.VECTOR_REFLECTION_SKIA,
   },
@@ -26,13 +26,13 @@ export const DATA: ListType[] = [
   },
   {
     name: 'Unit Circle',
-    description: 'Funky unit circle colors also reanimated & skia.',
+    description: 'Funky unit circle using reanimated & skia.',
     icon: 'coord',
     screenName: Screens.CIRCLE_SHADER,
   },
   {
-    name: 'Mandelbrot Conner',
-    description: 'Mandelbrot with some neons.',
+    name: 'Mandelbrot',
+    description: 'Zoom into a Mandelbrot cornner and some fascinating neons.',
     icon: 'madelbrotZoom',
     screenName: Screens.MANDELBROT,
   },
