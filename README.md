@@ -16,9 +16,10 @@ follow the instructions under 'Installing dependencies'.
 1. Clone this repo on your machine and open it at its root level on your 
 Terminal (or Console).
 2. Install project dependencies with `yarn install`
-3. Install pods `RCT_NEW_ARCH_ENABLED=1 bundle exec pod install  --project-directory=ios/` or `pod install  --project-directory=ios/` for old ARCH
-4. Run project on ios with `yarn ios`.
-5. Run project on Android  with `yarn android`.
+3. Run `bundle install` to install missing gems.
+4. Install pods `RCT_NEW_ARCH_ENABLED=1 bundle exec pod install  --project-directory=ios/` or `pod install  --project-directory=ios/` for old ARCH
+5. Run project on ios with `yarn ios`.
+6. Run project on Android  with `yarn android`.
 
 Some challenging samples built in react-native
 
