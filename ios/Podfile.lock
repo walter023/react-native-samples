@@ -943,7 +943,7 @@ PODS:
   - React-Mapbuffer (0.73.2):
     - glog
     - React-debug
-  - react-native-skia (0.1.237):
+  - react-native-skia (0.1.234):
     - glog
     - hermes-engine
     - RCT-Folly (= 2022.05.16.00)
@@ -1192,7 +1192,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated (3.6.2):
+  - RNReanimated (3.6.1):
     - glog
     - hermes-engine
     - RCT-Folly (= 2022.05.16.00)
@@ -1504,7 +1504,7 @@ SPEC CHECKSUMS:
   React-jsitracing: 7c77101b38fcc8fa7f198de7e1d834350a85af90
   React-logger: 66b168e2b2bee57bd8ce9e69f739d805732a5570
   React-Mapbuffer: 9ee041e1d7be96da6d76a251f92e72b711c651d6
-  react-native-skia: a89ef79908283c89c99f8df3eade90c8b2bd08a7
+  react-native-skia: f75a5384bd14ea3ce6899e56566be7e2746d28ec
   React-nativeconfig: d753fbbc8cecc8ae413d615599ac378bbf6999bb
   React-NativeModulesApple: 964f4eeab1b4325e8b6a799cf4444c3fd4eb0a9c
   React-perflogger: 29efe63b7ef5fbaaa50ef6eaa92482f98a24b97e
@@ -1529,7 +1529,7 @@ SPEC CHECKSUMS:
   React-utils: f5bc61e7ea3325c0732ae2d755f4441940163b85
   ReactCommon: 45b5d4f784e869c44a6f5a8fad5b114ca8f78c53
   RNGestureHandler: 1190c218cdaaf029ee1437076a3fbbc3297d89fb
-  RNReanimated: 080ec2919367fb8d91997f48cc9122d599927857
+  RNReanimated: 71030d84b41327898b22cab449eb5379baf8725e
   RNSVG: db32cfcad0a221fd175e0882eff7bcba7690380a
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: e64aa65de36c0832d04e8c7bd614396c77a80047

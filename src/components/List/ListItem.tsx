@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { ListRenderItemInfo, Pressable, StyleSheet, Text, useColorScheme, useWindowDimensions, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 
-import { isAndroid } from '../../helpers/index.ts';
+import { isAndroid } from '../../helpers/utils.ts';
 import { DATA } from '../../models/index.ts';
 import * as theme from '../../theme.ts';
 import { NavigationContext } from '../../navigation/index.tsx';

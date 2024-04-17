@@ -1,4 +1,4 @@
-import { lerp, intersectionPoint, reflect } from './index.ts';
+import { lerp, intersectionPoint, reflect } from './utils.ts';
 
 describe('lerp', () => {
   const FROM = 0;

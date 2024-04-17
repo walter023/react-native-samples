@@ -38,12 +38,12 @@ export const DATA: ListType[] = [
     icon: 'circles',
     screenName: Screens.SHADER,
   },
-  /*  {
+  {
     name: 'Love Hole',
     description: 'Another Shader.',
     icon: 'coord',
     screenName: Screens.LOVE_HOLE,
-  }, */
+  },
 ];
 
 export default DATA;

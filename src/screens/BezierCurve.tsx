@@ -7,7 +7,7 @@ import BackButton from '../components/BackButton/index.tsx';
 const BezierCurveScreen: React.FC = () => (
   <Layout>
     <BackButton />
-    <GestureHandlerRootView>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <Beziercurve />
     </GestureHandlerRootView>
   </Layout>

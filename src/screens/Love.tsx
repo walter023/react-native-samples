@@ -1,12 +1,15 @@
 import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Layout from '../layout/index.tsx';
 import BackButton from '../components/BackButton/index.tsx';
-import LoveHole from '../components/Shader/Texture.tsx';
+import { Transitions } from '../components/Shader/Texture.tsx';
 
 const LoveHoleScreen: React.FC = () => (
   <Layout>
-    <LoveHole />
     <BackButton />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Transitions />
+    </GestureHandlerRootView>
   </Layout>
 );
 
