@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Canvas, Fill, ImageShader, Shader, clamp } from '@shopify/react-native-skia';
@@ -32,6 +32,7 @@ const at = <T,>(array: T[], index: number) => {
 export const Transitions = () => {
   const progressLeft = useSharedValue(0);
   const assets = useAssets();
+
   const panLeft = useMemo(
     () =>
       Gesture.Pan()
@@ -53,9 +54,9 @@ export const Transitions = () => {
   if (!assets) return null;
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <GestureDetector gesture={panLeft}>
-        <Canvas style={{ flex: 1 }}>
+        <Canvas style={styles.container}>
           <Fill>
             <Shader source={transitions[3]} uniforms={uniformsLeft}>
               <ImageShader image={assets[1]} fit="cover" width={width} height={height} />
@@ -67,3 +68,9 @@ export const Transitions = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
