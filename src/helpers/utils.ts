@@ -4,6 +4,23 @@ import { Points, Vector2 } from '../../types.ts';
 export const isIos = Platform.OS === 'ios';
 export const isAndroid = Platform.OS !== 'ios';
 
+/*
+ // Example usage:
+const arr = [1, 2, 3, 4, 5];
+console.log(getElementAtIndex(arr, 7)); // Output: 3
+console.log(getElementAtIndex(arr, -2)); // Output: 4
+*/
+
+export const getElementAtIndex = <T>(array: T[], index: number) => {
+  'worklet';
+
+  if (!array) return null;
+  if (array.length === 0) {
+    throw new Error('Array is empty.');
+  }
+  return array[((index % array.length) + array.length) % array.length];
+};
+
 export const snapPoint = (value: number, velocity: number, points: ReadonlyArray<number>): number => {
   'worklet';
 

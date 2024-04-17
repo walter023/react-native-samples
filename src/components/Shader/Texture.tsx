@@ -4,29 +4,12 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Canvas, Fill, ImageShader, Shader, clamp } from '@shopify/react-native-skia';
 
-import { snapPoint } from '../../helpers/utils.ts';
+import { snapPoint, getElementAtIndex } from '../../helpers/utils.ts';
 import { cube, pageCurl /*  glitchMemories, swirl, swap */ } from '../../helpers/transitions.ts';
 import { transition } from '../../helpers/base.ts';
 import { useAssets } from '../../helpers/assets.ts';
 
 const { width, height } = Dimensions.get('window');
-
-/*
- // Example usage:
-const arr = [1, 2, 3, 4, 5];
-console.log(getElementAtIndex(arr, 7)); // Output: 3
-console.log(getElementAtIndex(arr, -2)); // Output: 4
-*/
-
-const at = <T,>(array: T[], index: number) => {
-  'worklet';
-
-  if (!array) return null;
-  if (array.length === 0) {
-    throw new Error('Array is empty.');
-  }
-  return array[((index % array.length) + array.length) % array.length];
-};
 
 // eslint-disable-next-line import/prefer-default-export
 export const Transitions = () => {
@@ -73,9 +56,9 @@ export const Transitions = () => {
     [progressRight, indexOffset],
   );
 
-  const asset1 = useDerivedValue(() => at(assets!, indexOffset.value - 1));
-  const asset2 = useDerivedValue(() => at(assets!, indexOffset.value));
-  const asset3 = useDerivedValue(() => at(assets!, indexOffset.value + 1));
+  const asset1 = useDerivedValue(() => getElementAtIndex(assets!, indexOffset.value - 1));
+  const asset2 = useDerivedValue(() => getElementAtIndex(assets!, indexOffset.value));
+  const asset3 = useDerivedValue(() => getElementAtIndex(assets!, indexOffset.value + 1));
 
   const uniformsLeft = useDerivedValue(() => ({
     progress: progressLeft.value,
