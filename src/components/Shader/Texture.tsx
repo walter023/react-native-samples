@@ -58,8 +58,8 @@ export const Transitions = () => {
         <Canvas style={{ flex: 1 }}>
           <Fill>
             <Shader source={transitions[3]} uniforms={uniformsLeft}>
-              <ImageShader image={assets[3]} fit="cover" width={width} height={height + 100} />
               <ImageShader image={assets[1]} fit="cover" width={width} height={height} />
+              <ImageShader image={assets[0]} fit="cover" width={width} height={height} />
             </Shader>
           </Fill>
         </Canvas>

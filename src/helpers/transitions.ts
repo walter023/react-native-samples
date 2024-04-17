@@ -351,16 +351,16 @@ vec4 transition(vec2 p) {
         float s = sin(-angle);
 
         mat3 rotation = mat3( c, s, 0,
-                                                                -s, c, 0,
-                                                                -0.801, 0.8900, 1
-                                                                );
+                              -s, c, 0,
+                              -0.801, 0.8900, 1
+                             );
         c = cos(angle);
         s = sin(angle);
 
         mat3 rrotation = mat3(	c, s, 0,
-                                                                        -s, c, 0,
-                                                                        0.98500, 0.985, 1
-                                                                );
+                               -s, c, 0,
+                                0.98500, 0.985, 1
+                              );
 
         vec3 point = rotation * vec3(p, 1.0);
         float cylinderCenter = amount;
