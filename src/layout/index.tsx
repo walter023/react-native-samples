@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, useColorScheme, useWindowDimensions, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, useColorScheme, useWindowDimensions, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Colors } from '../constants/index.ts';
 import { LayoutProps } from '../../types.ts';
@@ -9,7 +9,7 @@ const Layout: React.FC<LayoutProps> = ({ children, slideInLeft = true, title, st
   const isDarkMode = useColorScheme() === 'dark';
   const { width } = useWindowDimensions();
   const translateX = useSharedValue(width);
-  const LayoutView = Animated.createAnimatedComponent(SafeAreaView);
+  const LayoutView = Animated.createAnimatedComponent(View);
 
   useEffect(() => {
     translateX.value = withTiming(0, { duration: 500 });
@@ -41,14 +41,14 @@ const styles = (isDarkMode: boolean) =>
     headerContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      padding: 8,
-      paddingHorizontal: 16,
+      marginTop: 20,
       borderBottomWidth: StyleSheet.hairlineWidth,
       backgroundColor: theme.home(isDarkMode).headerBg,
       borderColor: theme.home(isDarkMode).borderColor,
-      height: 52,
+      height: 60,
     },
     headerText: {
+      marginTop: 25,
       flex: 1,
       fontSize: 18,
       fontWeight: '600',
