@@ -6,6 +6,8 @@ import { useDerivedValue } from 'react-native-reanimated';
 const source = Skia.RuntimeEffect.Make(`
 uniform vec2 iResolution;
 uniform float  iTime;   
+const float threshold = 4.0;
+const float maxIndex = 150.0;
 
 vec3 palette(in float t) {
   vec3 a = vec3(0.618, 0.658, 0.500);
@@ -18,7 +20,7 @@ vec3 palette(in float t) {
 vec2 setCamera(vec2 uv) {
   float rad = -2.1;
   uv = mat2(cos(rad), sin(rad), -sin(rad), cos(rad)) * uv;
-  uv += vec2(4.5, 21.7);
+  uv += vec2(4.5, 21.74);
   return uv *= .0289;
 }
 
@@ -29,35 +31,19 @@ vec2 Mandelbrot(vec2 uv, vec2 z) {
   return vec2(zr, zi) + uv;
 }
 
-
 vec4 main( vec2 fragCoord ) {
-  vec2 uv = fragCoord / iResolution; 
-  uv = uv * 2 - 1; 
-  uv.x *= iResolution.x / iResolution.y; 
-
-  vec2 uv0 = uv;
-  int MAX_INDEX = 250;
-  float MAX_MAGNITUDE = 2.0;
-  bool isBounded = true;
-  uv0.x -= .05;
-  uv0.y += .012;
-  float d = (length(uv0) - 0.005) * 0.08;
-
+  vec2 uv = (fragCoord * 2.0 - iResolution.xy) / iResolution.y;
+  float d = (length(uv) - 0.005) * 0.08;
   uv = setCamera(uv);
-
   vec2 z = uv;
   vec3 finalColor = palette(0.005 / d + iTime * 0.0002);
   for(int i = 0; i < 150; i++) {
-    if(length(z) > MAX_MAGNITUDE) {
-      isBounded = false;
+    if(length(z) > maxIndex) {
+      finalColor = vec3(0.04);
       break;
     }
     z = Mandelbrot(uv, z);
   }
-
-  if(!isBounded)
-    finalColor = vec3(0.04);
-
   return vec4(finalColor, 1);
 }`)!;
 
