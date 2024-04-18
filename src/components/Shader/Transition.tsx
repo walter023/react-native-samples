@@ -5,8 +5,8 @@ import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanim
 import { Canvas, Fill, ImageShader, Shader, clamp } from '@shopify/react-native-skia';
 
 import { snapPoint, getElementAtIndex } from '../../helpers/utils.ts';
-import { glitchMemories, pageCurl /*  glitchMemories, swirl, swap */ } from '../../helpers/transitions.ts';
-import { transition } from '../../helpers/base.ts';
+import { glitchMemories, pageCurl /*  glitchMemories, swirl, swap */ } from '../../helpers/transitions/transitions.ts';
+import { transition } from '../../helpers/transitions/base.ts';
 import { useAssets } from '../../helpers/assets.ts';
 
 const { width, height } = Dimensions.get('window');

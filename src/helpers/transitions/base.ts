@@ -1,4 +1,4 @@
-import { frag } from './tags.ts';
+import { frag } from '../tags.ts';
 
 export type Transition = string;
 

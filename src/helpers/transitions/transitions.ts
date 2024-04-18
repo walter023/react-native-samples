@@ -1,4 +1,4 @@
-import { glsl } from './tags.ts';
+import { glsl } from '../tags.ts';
 import type { Transition } from './base.ts';
 
 export const linear: Transition = glsl`
