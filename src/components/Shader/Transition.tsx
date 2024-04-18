@@ -5,14 +5,13 @@ import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanim
 import { Canvas, Fill, ImageShader, Shader, clamp } from '@shopify/react-native-skia';
 
 import { snapPoint, getElementAtIndex } from '../../helpers/utils.ts';
-import { cube, pageCurl /*  glitchMemories, swirl, swap */ } from '../../helpers/transitions.ts';
+import { glitchMemories, pageCurl /*  glitchMemories, swirl, swap */ } from '../../helpers/transitions.ts';
 import { transition } from '../../helpers/base.ts';
 import { useAssets } from '../../helpers/assets.ts';
 
 const { width, height } = Dimensions.get('window');
 
-// eslint-disable-next-line import/prefer-default-export
-export const Transitions = () => {
+const Transitions = () => {
   const indexOffset = useSharedValue(0);
   const progressLeft = useSharedValue(0);
   const progressRight = useSharedValue(0);
@@ -40,7 +39,7 @@ export const Transitions = () => {
   const panRight = useMemo(
     () =>
       Gesture.Pan()
-        .activeOffsetX(5.0)
+        .activeOffsetX(5)
         .onChange(pos => {
           progressRight.value = clamp(progressRight.value + pos.changeX / width, 0, 1);
         })
@@ -77,7 +76,7 @@ export const Transitions = () => {
       <GestureDetector gesture={Gesture.Race(panLeft, panRight)}>
         <Canvas style={styles.container}>
           <Fill>
-            <Shader source={transition(cube)} uniforms={uniformsRight}>
+            <Shader source={transition(glitchMemories)} uniforms={uniformsRight}>
               <Shader source={transition(pageCurl)} uniforms={uniformsLeft}>
                 <ImageShader image={asset2} fit="cover" width={width} height={height} />
                 <ImageShader image={asset3} fit="cover" width={width} height={height} />
@@ -96,3 +95,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+export default Transitions;
