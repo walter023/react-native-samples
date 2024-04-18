@@ -1,4 +1,5 @@
 import { Platform, useWindowDimensions } from 'react-native';
+import { SkImage } from '@shopify/react-native-skia';
 import { Points, Vector2 } from '../../types.ts';
 
 export const isIos = Platform.OS === 'ios';
@@ -7,11 +8,13 @@ export const isAndroid = Platform.OS !== 'ios';
 /*
  // Example usage:
 const arr = [1, 2, 3, 4, 5];
-console.log(getElementAtIndex(arr, 7)); // Output: 3
-console.log(getElementAtIndex(arr, -2)); // Output: 4
+console.log(getElementAtIndex(arr, 7)); // Output: 2
+console.log(getElementAtIndex(arr, -2)); // Output: 3
+console.log(((7 % 5)+ 5) % 5);
+console.log(((-2 % 5)+ 5) % 5);
 */
 
-export const getElementAtIndex = <T>(array: T[], index: number) => {
+export const getElementAtIndex = <T extends SkImage>(array: T[], index: number) => {
   'worklet';
 
   if (!array) return null;
@@ -28,25 +31,6 @@ export const snapPoint = (value: number, velocity: number, points: ReadonlyArray
   const deltas = points.map(p => Math.abs(point - p));
   const minDelta = Math.min.apply(null, deltas);
   return points.filter(p => Math.abs(point - p) === minDelta)[0];
-};
-
-export const ControlPointsInitState = (): Points => {
-  const { width, height } = useWindowDimensions();
-  const points = {
-    p0: {
-      x: 20,
-      y: height / 2,
-    },
-    p1: {
-      x: width / 2,
-      y: 20,
-    },
-    p2: {
-      x: width - 20,
-      y: height / 2,
-    },
-  };
-  return points;
 };
 
 /**
@@ -73,7 +57,7 @@ export const lerp = (startPoint: number, endPoint: number, t: number): number =>
  * y = slope * (xEdge - xOrigin) + yOrigin,
  * xEdge is the x-coordinate of the edge point. xEdge = (edge === 'right') ? width : 0;.
  */
-export const intersectionPoint = (incomingVector: Vector2, origin: Vector2, resolution: Vector2): Vector2 => {
+export const intersectionPoint = <T extends Vector2>(incomingVector: T, origin: T, resolution: T): Vector2 => {
   'worklet';
 
   const vector = { x: incomingVector.x - origin.x, y: incomingVector.y - origin.y };
@@ -88,7 +72,7 @@ export const intersectionPoint = (incomingVector: Vector2, origin: Vector2, reso
   return { x: Math.round(hitPoint.x), y: Math.round(hitPoint.y) };
 };
 
-export const reflect = (incomingVector: Vector2, normalVector: Vector2): Vector2 => {
+export const reflect = <T extends Vector2>(incomingVector: T, normalVector: T): Vector2 => {
   'worklet';
 
   const scalarProjection = incomingVector.x * normalVector.x + incomingVector.y * normalVector.y;
@@ -96,4 +80,23 @@ export const reflect = (incomingVector: Vector2, normalVector: Vector2): Vector2
     x: incomingVector.x - 2 * scalarProjection * normalVector.x,
     y: incomingVector.y - 2 * scalarProjection * normalVector.y,
   };
+};
+
+export const ControlPointsInitState = (): Points => {
+  const { width, height } = useWindowDimensions();
+  const points = {
+    p0: {
+      x: 20,
+      y: height / 2,
+    },
+    p1: {
+      x: width / 2,
+      y: 20,
+    },
+    p2: {
+      x: width - 20,
+      y: height / 2,
+    },
+  };
+  return points;
 };
