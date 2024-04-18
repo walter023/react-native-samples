@@ -1,4 +1,4 @@
-import { Platform, useWindowDimensions } from 'react-native';
+import { Platform } from 'react-native';
 import { SkImage } from '@shopify/react-native-skia';
 import { Points, Vector2 } from '../../types.ts';
 
@@ -48,7 +48,6 @@ export const lerp = (startPoint: number, endPoint: number, t: number): number =>
 /*
  * Calculate the hit point of the screen's edge, using the slope-intercept form of a line:
  * y = mx + b
- * yOrigin = m * xOrigin + b
  * b = y - mx
  * b = yOrigin - m * xOrigin
  * y = mx + b
@@ -82,8 +81,7 @@ export const reflect = <T extends Vector2>(incomingVector: T, normalVector: T): 
   };
 };
 
-export const ControlPointsInitState = (): Points => {
-  const { width, height } = useWindowDimensions();
+export const getPointState = (width: number, height: number): Points => {
   const points = {
     p0: {
       x: 20,

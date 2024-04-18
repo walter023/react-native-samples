@@ -14,13 +14,13 @@ import Animated, {
 import { Points as PointsPros } from '../../../types.ts';
 
 import { Colors, R, BEZIER_DURATION } from '../../constants/index.ts';
-import { lerp, ControlPointsInitState } from '../../helpers/utils.ts';
+import { lerp, getPointState } from '../../helpers/utils.ts';
 import ControlPoint from './ControlPoint.tsx';
 
 const Beziercurve: React.FC = () => {
   const AnimatedPath = Animated.createAnimatedComponent(Path);
   const { width, height } = useWindowDimensions();
-  const state = ControlPointsInitState();
+  const state = getPointState(width, height);
   const ctrlPoints = useSharedValue<PointsPros>(state);
 
   const sideAX = useSharedValue<number>(state.p1.x);
