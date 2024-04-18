@@ -39,10 +39,10 @@ export const DATA: ListType[] = [
     screenName: Screens.SHADER,
   },
   {
-    name: 'Love Hole',
-    description: 'Another Shader.',
-    icon: 'coord',
-    screenName: Screens.LOVE_HOLE,
+    name: 'Transitions',
+    description: 'Transitions using gls and skia.',
+    icon: 'length',
+    screenName: Screens.TRANSITIONS,
   },
 ];
 

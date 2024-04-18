@@ -20,7 +20,7 @@ const templateScreen: TemplateScreen = {
   VECTOR_REFLECTION_SKIA: <ReflectionSkiaScreen />,
   SHADER: <ShaderScreen />,
   CIRCLE_SHADER: <CircleShaderScreen />,
-  LOVE_HOLE: <TransitionScreen />,
+  TRANSITIONS: <TransitionScreen />,
   MANDELBROT: <MandelbrotScreen />,
 };
 
