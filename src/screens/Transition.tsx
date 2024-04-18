@@ -3,9 +3,9 @@ import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Layout from '../layout/index.tsx';
 import BackButton from '../components/BackButton/index.tsx';
-import { Transitions } from '../components/Shader/Texture.tsx';
+import { Transitions } from '../components/Shader/Transition.tsx';
 
-const LoveHoleScreen: React.FC = () => (
+const TransitionScreen: React.FC = () => (
   <Layout>
     <BackButton />
     <GestureHandlerRootView style={styles.gesture}>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-export default LoveHoleScreen;
+export default TransitionScreen;

@@ -6,7 +6,7 @@ import MandelbrotZoomScreen from '../screens/VectorReflection.tsx';
 import ShaderScreen from '../screens/Shader.tsx';
 import CircleShaderScreen from '../screens/CircleShader.tsx';
 import ReflectionSkiaScreen from '../screens/ReflectionSkia.tsx';
-import LoveHoleScreen from '../screens/Love.tsx';
+import TransitionScreen from '../screens/Transition.tsx';
 import MandelbrotScreen from '../screens/Mandelbrot.tsx';
 
 type TemplateScreen = {
@@ -20,7 +20,7 @@ const templateScreen: TemplateScreen = {
   VECTOR_REFLECTION_SKIA: <ReflectionSkiaScreen />,
   SHADER: <ShaderScreen />,
   CIRCLE_SHADER: <CircleShaderScreen />,
-  LOVE_HOLE: <LoveHoleScreen />,
+  LOVE_HOLE: <TransitionScreen />,
   MANDELBROT: <MandelbrotScreen />,
 };
 
