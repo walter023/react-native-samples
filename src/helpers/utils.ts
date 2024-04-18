@@ -91,10 +91,10 @@ export const ControlPointsInitState = (): Points => {
     },
     p1: {
       x: width / 2,
-      y: 20,
+      y: 70,
     },
     p2: {
-      x: width - 20,
+      x: width - 30,
       y: height / 2,
     },
   };
