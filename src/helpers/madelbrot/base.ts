@@ -2,7 +2,7 @@ import { frag } from '../tags.ts';
 
 export type Type = string;
 
-export const Madelbrot = (t: Type) => frag`
+export const makeMadelbrot = (t: Type) => frag`
 uniform vec2 iResolution;
 uniform float  iTime;   
 const float threshold = 4.0;

@@ -3,7 +3,7 @@ import { Canvas, Shader, Fill, vec, useClock } from '@shopify/react-native-skia'
 import { StyleSheet, useWindowDimensions } from 'react-native';
 import { useDerivedValue } from 'react-native-reanimated';
 import { zoom } from '../../helpers/madelbrot/madelbrot.ts';
-import { Madelbrot } from '../../helpers/madelbrot/base.ts';
+import { makeMadelbrot } from '../../helpers/madelbrot/base.ts';
 
 const MandelbrotZoom = () => {
   const { height, width } = useWindowDimensions();
@@ -14,7 +14,7 @@ const MandelbrotZoom = () => {
   return (
     <Canvas style={{ ...styles.container, height, width }}>
       <Fill>
-        <Shader source={Madelbrot(zoom)} uniforms={uniforms} />
+        <Shader source={makeMadelbrot(zoom)} uniforms={uniforms} />
       </Fill>
     </Canvas>
   );
