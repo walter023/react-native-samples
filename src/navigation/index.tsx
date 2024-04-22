@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Screens } from '../constants/index.ts';
 import HomeScreen from '../screens/Home.tsx';
 import BezierCurveScreen from '../screens/BezierCurve.tsx';
-import MandelbrotZoomScreen from '../screens/VectorReflection.tsx';
+import MandelbrotZoomScreen from '../screens/MadelbrotZoom.tsx';
 import ShaderScreen from '../screens/Shader.tsx';
 import CircleShaderScreen from '../screens/CircleShader.tsx';
 import ReflectionSkiaScreen from '../screens/ReflectionSkia.tsx';
